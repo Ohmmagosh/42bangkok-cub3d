@@ -16,20 +16,27 @@ MAIN		= main.c
 MAIN_DIR	= ./
 
 CC			= gcc
-CFLAG		= -g -Wall -Werror -Wextra
+CFLAGS		= -g -Wall -Werror -Wextra -Imlx
 
 SRC_DIR		= ./src/
 
-MODULE1		= *.c
-MODULE2		= *.c
-MODULE3		= *.c
+MODULE1		= input.c
+MODULE2		= process.c
+MODULE3		= free.c
+MODULE4		= init.c
 
 MODULE1_DIR	= ./src/input/
 MODULE2_DIR = ./src/process/
 MODULE3_DIR = ./src/free/
-MODULE3_DIR = ./src/init/
+MODULE4_DIR = ./src/init/
 
 LIB_DIR		= ./lib/
+MLX = mlx/libmlx.a
+INCLUDE_MLX = -framework OpenGL -framework AppKit
+LIBFT = libft/libft.a
+LIB =	${addprefix $(LIB_DIR),$(LIBFT)} \
+		#${addprefix $(LIB_DIR),$(MLX)}
+
 
 OBJ_DIR		= ./obj/
 
@@ -41,8 +48,6 @@ OBJS		= ${addprefix $(OBJ_DIR),$(MODULE1:.c=.o)} \
 
 RM = rm -rf
 
-LIBFT = libft.a
-MLX = mlx.a
 
 BRED =\033[1;31m
 BGRN =\033[1;32m
@@ -80,30 +85,34 @@ ${OBJ_DIR}%.o: ${MODULE3_DIR}%.c
 ${OBJ_DIR}%.o: ${MODULE4_DIR}%.c
 	$(CC) -c -o $@ $^
 
-mlx:
-	make -C lib/mlx
+all: ${OBJ_DIR} ${NAME}
+	@$(LOAD)
+	@sleep 0.5
+	@$(CUBE)
 
-libft:
-	make -C lib/libft
 
-all: mlx libft ${OBJ_DIR} ${NAME}
-	$(LOAD)
-	$(CUBE)
 
 ${OBJ_DIR}:
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 ${OBJ_DIR}%.o: ${MAIN_DIR}%.c
 	$(CC) -c -o $@ $^
 
 ${NAME}: ${OBJS}
-	$(CC) $(OBJS) -o $(NAME) $(CFLAG)
+	@make -C lib/libft
+	@make -C lib/mlx
+	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
 
 
 clean:
-	$(RM) $(OBJ_DIR)
+	@make -C lib/libft clean
+	@make -C lib/mlx clean
+	@echo "$(BRED)mlx Clean....$(RES)"
+	@$(RM) $(OBJ_DIR)
 fclean: clean
-	$(RM) $(NAME)
+	@make -C lib/libft fclean
+	@$(RM) $(NAME)
+
 re: fclean all
 
 
