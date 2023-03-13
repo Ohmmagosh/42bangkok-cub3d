@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/05/17 12:27:27 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/12/13 20:07:40 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "ft_printf.h"
 
-int	main(int ac, char **av)
+int	ft_printf(const char *s, ...)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	va_list		ap;
+	int			count;
+
+	count = 0;
+	va_start(ap, s);
+	while (*s)
+	{
+		if (*s == '%')
+		{
+			count += ft_printf_check(s, ap);
+			s++;
+		}
+		else
+			count += ft_putchar(*s);
+		s++;
+	}
+	va_end(ap);
+	return (count);
 }

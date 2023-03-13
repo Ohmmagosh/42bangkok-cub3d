@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/02/21 21:58:36 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/03/13 05:49:23 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	(void)ac;
-	(void)av;
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }

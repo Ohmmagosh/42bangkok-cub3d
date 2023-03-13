@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/03/06 15:43:17 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/12/13 20:14:15 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strtrim(char *s1, char *set)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	size_t	len;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	if (!s1 || !set)
+		return (NULL);
+	len = ft_strlen(s1);
+	while (ft_strchr(set, *(s1 + i)) && i < len)
+		i++;
+	while (ft_strchr(set, *(s1 + len - j)) && j < len)
+		j++;
+	if (i == len)
+		return (ft_calloc(1, 1));
+	return (ft_substr(s1, i, len - i - j + 1));
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/02/25 22:00:40 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/03/25 19:03:32 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	unsigned char	*temp;
+	size_t			i;
+
+	temp = s;
+	i = 0;
+	while (i < n)
+	{
+		temp[i] = 0;
+		i++;
+	}
 }

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/02/22 23:41:24 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/12/13 20:12:46 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	size_t	lenght;
+
+	lenght = ft_strlen(dst);
+	dst += lenght;
+	if (lenght > dstsize)
+		return (dstsize + ft_strlen(src));
+	while (lenght < dstsize - 1 && *src && dstsize != 0)
+	{
+		*dst = *src;
+		dst++;
+		src++;
+		lenght++;
+	}
+	*dst = '\0';
+	return (lenght + ft_strlen(src));
 }

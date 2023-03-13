@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/12 03:13:38 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/02/27 18:01:12 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/12/13 20:12:09 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <stdio.h>
+void	*ft_memmove(void *dst, void *src, size_t len)
+{
+	unsigned char	*s;
+	unsigned char	*d;
+	int				i;
 
-#endif
+	i = len;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	if (s == d || len == 0)
+		return (dst);
+	if (d < s)
+		while (i--)
+			*d++ = *s++;
+	else
+	{
+		s = s + len - 1;
+		d = d + len - 1;
+		while (len--)
+			*d-- = *s--;
+	}
+	return (dst);
+}

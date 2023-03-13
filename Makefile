@@ -1,32 +1,48 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/12 02:35:33 by psuanpro          #+#    #+#              #
-#    Updated: 2023/03/12 04:49:29 by psuanpro         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+## **************************************************************************** #
+##                                                                              #
+##                                                         :::      ::::::::    #
+##    Makefile                                           :+:      :+:    :+:    #
+##                                                     +:+ +:+         +:+      #
+##    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
+##                                                 +#+#+#+#+#+   +#+            #
+##    Created: 2023/03/12 02:35:33 by psuanpro          #+#    #+#              #
+##    Updated: 2023/03/12 18:38:01 by psuanpro         ###   ########.fr        #
+##                                                                              #
+## **************************************************************************** #
 
-NAME = cub3d
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+NAME		= cub3d
 
+MAIN		= main.c
+MAIN_DIR	= ./
 
-SRCS = main.c
+CC			= gcc
+CFLAG		= -g -Wall -Werror -Wextra
 
-SRCS_DIR = src
+SRC_DIR		= ./src/
 
-SRC := $(addprefix $(SRCS_DIR)/, $(SRCS))
+MODULE1		= *.c
+MODULE2		= *.c
+MODULE3		= *.c
 
-OBJS = $(SRCS:.c=.o)
+MODULE1_DIR	= ./src/input/
+MODULE2_DIR = ./src/process/
+MODULE3_DIR = ./src/free/
+MODULE3_DIR = ./src/init/
 
-OBJ_DIR = obj
-OBJ := $(addprefix $(OBJ_DIR)/,$(OBJS))
-HEAD = cub3d.h
-HEADER := $(addprefix $(SRCS_DIR)/, $(HEAD))
+LIB_DIR		= ./lib/
+
+OBJ_DIR		= ./obj/
+
+OBJS		= ${addprefix $(OBJ_DIR),$(MODULE1:.c=.o)} \
+			  ${addprefix $(OBJ_DIR),$(MODULE2:.c=.o)} \
+			  ${addprefix $(OBJ_DIR),$(MODULE3:.c=.o)} \
+			  ${addprefix $(OBJ_DIR),$(MODULE4:.c=.o)} \
+			  ${addprefix $(OBJ_DIR),$(MAIN:.c=.o)}
+
+RM = rm -rf
+
+LIBFT = libft.a
+MLX = mlx.a
 
 BRED =\033[1;31m
 BGRN =\033[1;32m
@@ -37,8 +53,7 @@ BLU = \033[0;34m
 COMPILE = echo "$(BGRN)$(NAME) compiled....$(RES)"
 CLEAN = echo "$(BYEL)$(NAME) clean....$(RES)"
 FCLEAN = echo "$(BRED)$(NAME) fclean....$(RES)"
-
-
+LOAD = bash ./src/script/animation.sh $(MODULE1) $(MODULE2) $(MODULE3) $(MODULE4);
 CUBE =  echo '$(BLU)________$(RES)/\\\\\\\\\\\\\\\\\\$(BLU)________________$(RES)/\\\\\\$(BLU)____________$(RES)/\\\\\\\\\\\\\\\\\\\\$(BLU)___$(RES)/\\\\\\\\\\\\\\\\\\\\\\\\$(BLU)____$(RES)         '; \
 		echo ' $(BLU)_____$(RES)/\\\\\\////////$(BLU)________________$(RES)\\/\\\\\\$(BLU)__________$(RES)/\\\\\\///////\\\\\\$(BLU)_$(RES)\\/\\\\\\////////\\\\\\$(BLU)__$(RES)        '; \
 		echo '  $(BLU)___$(RES)/\\\\\\/$(BLU)_________________________$(RES)\\/\\\\\\$(BLU)_________$(RES)\\///$(BLU)______$(RES)/\\\\\\$(BLU)__$(RES)\\/\\\\\\$(BLU)______$(RES)\\//\\\\\\$(BLU)_$(RES)       '; \
@@ -49,27 +64,47 @@ CUBE =  echo '$(BLU)________$(RES)/\\\\\\\\\\\\\\\\\\$(BLU)________________$(RES
 		echo '       $(BLU)____$(RES)\\////\\\\\\\\\\\\\\\\\\_$(RES)\\//\\\\\\\\\\\\\\\\\\$(BLU)__$(RES)\\/\\\\\\\\\\\\\\\\\\$(BLU)__$(RES)\\///\\\\\\\\\\\\\\\\\\/$(BLU)___$(RES)\\/\\\\\\\\\\\\\\\\\\\\\\\\/$(BLU)___$(RES)  '; \
 		echo '        $(BLU)_______$(RES)\\/////////$(BLU)___$(RES)\\/////////$(BLU)___$(RES)\\/////////$(BLU)_____$(RES)\\/////////$(BLU)_____$(RES)\\////////////$(BLU)_____$(RES) ';
 
+#input
+${OBJ_DIR}%.o: ${MODULE1_DIR}%.c
+	$(CC) -c -o $@ $^
 
+#process
+${OBJ_DIR}%.o: ${MODULE2_DIR}%.c
+	$(CC) -c -o $@ $^
 
-$(OBJ_DIR)/%.o:%.c $(HEADER)
-		@mkdir -p $(OBJ_DIR)
-		@$(CC) -g $(CLAFGS) -c $< -o $@
+#free
+${OBJ_DIR}%.o: ${MODULE3_DIR}%.c
+	$(CC) -c -o $@ $^
 
-all:$(NAME)
+#init
+${OBJ_DIR}%.o: ${MODULE4_DIR}%.c
+	$(CC) -c -o $@ $^
 
-$(NAME): $(OBJ)
-		@$(CC) -g $(CFLAGS) $(OBJ) -o $@
-		@$(COMPILE)
-		@$(CUBE)
+mlx:
+	make -C lib/mlx
+
+libft:
+	make -C lib/libft
+
+all: mlx libft ${OBJ_DIR} ${NAME}
+	$(LOAD)
+	$(CUBE)
+
+${OBJ_DIR}:
+	mkdir -p $(OBJ_DIR)
+
+${OBJ_DIR}%.o: ${MAIN_DIR}%.c
+	$(CC) -c -o $@ $^
+
+${NAME}: ${OBJS}
+	$(CC) $(OBJS) -o $(NAME) $(CFLAG)
+
 
 clean:
-		@rm -rf $(OBJ_DIR)
-		@$(CLEAN)
-
+	$(RM) $(OBJ_DIR)
 fclean: clean
-		@rm -rf $(NAME)
-		@$(FCLEAN)
-
+	$(RM) $(NAME)
 re: fclean all
 
-.PHONY: all clean fclean re
+
+

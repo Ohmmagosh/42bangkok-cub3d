@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 17:07:30 by psuanpro         ###   ########.fr       */
+/*   Created: 2022/02/27 16:37:43 by psuanpro          #+#    #+#             */
+/*   Updated: 2022/12/13 20:12:06 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memcpy(void *dst, void *src, size_t n)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	char	*s1;
+	char	*d1;
+	size_t	i;
+
+	s1 = (char *)src;
+	d1 = (char *)dst;
+	i = 0;
+	if (!s1 && !d1)
+		return (dst);
+	while (i < n)
+	{
+		d1[i] = s1[i];
+		i++;
+	}
+	return (dst);
 }
