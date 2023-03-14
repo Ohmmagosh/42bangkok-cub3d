@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/14 19:51:39 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:16:32 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-	printf("hello main\n");
-	print_init();
-	print_input();
-	print_process();
-	print_free();
-	ft_putstr_fd("helllo ft", 1);
+	if (ac == 2)
+	{
+		for (int i = 0; av[i]; i++)
+			ft_putendl_fd(av[i], 1);
+	}
+	else{
+		print_msg_err("wrong argument!!");
+	}
 	return (0);
 }

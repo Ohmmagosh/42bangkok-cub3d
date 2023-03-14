@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   print_msg_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/14 21:16:19 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/14 20:56:35 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/14 21:17:13 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../cub3d.h"
 
-# include "color.h"
-# include <stdio.h>
-# include "lib/libft/libft.h"
-# include "lib/mlx/mlx.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-
-//test
-void	free_func(void);
-void	print_init(void);
-void	print_input(void);
-void	print_process(void);
-void	print_free(void);
-
-//real
-void	print_msg_err(char *msg);
-
-#endif
+void	print_msg_err(char *msg)
+{
+	ft_putstr_fd(BRED, 2);
+	ft_putstr_fd("Error : ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(RES, 2);
+	ft_putstr_fd("\n", 2);
+	return ;
+}

@@ -28,11 +28,14 @@ MODULE3		= free.c
 
 MODULE4		= init.c
 
+MODULE5		= print_msg_utils.c
+
 
 MODULE1_DIR	= ./src/input/
 MODULE2_DIR = ./src/process/
 MODULE3_DIR = ./src/free/
 MODULE4_DIR = ./src/init/
+MODULE5_DIR = ./src/utils/
 
 LIB_DIR		= ./lib/
 MLX = mlx/libmlx.a
@@ -48,6 +51,7 @@ OBJS		= ${addprefix $(OBJ_DIR),$(MODULE1:.c=.o)} \
 			  ${addprefix $(OBJ_DIR),$(MODULE2:.c=.o)} \
 			  ${addprefix $(OBJ_DIR),$(MODULE3:.c=.o)} \
 			  ${addprefix $(OBJ_DIR),$(MODULE4:.c=.o)} \
+			  ${addprefix $(OBJ_DIR),$(MODULE5:.c=.o)} \
 			  ${addprefix $(OBJ_DIR),$(MAIN:.c=.o)}
 
 RM = rm -rf
@@ -87,6 +91,9 @@ ${OBJ_DIR}%.o: ${MODULE3_DIR}%.c
 
 #init
 ${OBJ_DIR}%.o: ${MODULE4_DIR}%.c
+	$(CC) -c -o $@ $^
+
+${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
 	$(CC) -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
