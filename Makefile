@@ -21,9 +21,13 @@ CFLAGS		= -g -Wall -Werror -Wextra -Imlx
 SRC_DIR		= ./src/
 
 MODULE1		= input.c
+
 MODULE2		= process.c
+
 MODULE3		= free.c
+
 MODULE4		= init.c
+
 
 MODULE1_DIR	= ./src/input/
 MODULE2_DIR = ./src/process/
@@ -35,7 +39,7 @@ MLX = mlx/libmlx.a
 INCLUDE_MLX = -framework OpenGL -framework AppKit
 LIBFT = libft/libft.a
 LIB =	${addprefix $(LIB_DIR),$(LIBFT)} \
-		#${addprefix $(LIB_DIR),$(MLX)}
+		${addprefix $(LIB_DIR),$(MLX)}
 
 
 OBJ_DIR		= ./obj/
