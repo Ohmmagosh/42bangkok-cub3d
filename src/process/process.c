@@ -6,13 +6,13 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 18:42:04 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:03:04 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	print_process(void)
+void	process_cube(t_pro *p)
 {
-	printf("hello process\n");
+
 }
