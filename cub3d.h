@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/13 18:44:33 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:33:11 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdio.h>
 # include "lib/libft/libft.h"
 # include "lib/mlx/mlx.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+
 
 
 void	free_func(void);
