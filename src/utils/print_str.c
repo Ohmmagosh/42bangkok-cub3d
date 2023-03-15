@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/15 22:11:21 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/15 22:02:36 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/15 22:07:45 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	free_twod_str(char	**str)
+void	print_twod_str(const char **str)
 {
-	int	i;
+	char	**tmp;
+	int		i;
 
-	while (str[i])
+	i = 0;
+	tmp = (char **)str;
+	while(tmp[i])
 	{
-		free(str[i]);
+		ft_printf("tmp[%d] -> %s\n", i, tmp[i]);
 		i++;
 	}
-	free(str);
+	return ;
 }

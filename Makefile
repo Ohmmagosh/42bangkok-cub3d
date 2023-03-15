@@ -20,7 +20,12 @@ CFLAGS		= -g -Wall -Werror -Wextra -Imlx
 
 SRC_DIR		= ./src/
 
-MODULE1		= input.c
+MODULE1		= input.c \
+				valid_texture.c \
+				valid_map.c \
+				valid_map_utils.c \
+				valid_path.c \
+				valid_file.c
 
 MODULE2		= process.c
 
@@ -28,7 +33,8 @@ MODULE3		= free.c
 
 MODULE4		= init.c
 
-MODULE5		= print_msg_utils.c
+MODULE5		= print_msg_utils.c \
+				print_str.c
 
 
 MODULE1_DIR	= ./src/input/
@@ -66,7 +72,8 @@ BLU = \033[0;34m
 COMPILE = echo "$(BGRN)$(NAME) compiled....$(RES)"
 CLEAN = echo "$(BYEL)$(NAME) clean....$(RES)"
 FCLEAN = echo "$(BRED)$(NAME) fclean....$(RES)"
-LOAD = bash ./src/script/animation.sh $(MODULE1) $(MODULE2) $(MODULE3) $(MODULE4);
+
+LOAD = bash ./src/script/animation.sh $(MODULE1) $(MODULE2) $(MODULE3) $(MODULE4) $(MODULE5);
 CUBE =  echo '$(BLU)________$(RES)/\\\\\\\\\\\\\\\\\\$(BLU)________________$(RES)/\\\\\\$(BLU)____________$(RES)/\\\\\\\\\\\\\\\\\\\\$(BLU)___$(RES)/\\\\\\\\\\\\\\\\\\\\\\\\$(BLU)____$(RES)         '; \
 		echo ' $(BLU)_____$(RES)/\\\\\\////////$(BLU)________________$(RES)\\/\\\\\\$(BLU)__________$(RES)/\\\\\\///////\\\\\\$(BLU)_$(RES)\\/\\\\\\////////\\\\\\$(BLU)__$(RES)        '; \
 		echo '  $(BLU)___$(RES)/\\\\\\/$(BLU)_________________________$(RES)\\/\\\\\\$(BLU)_________$(RES)\\///$(BLU)______$(RES)/\\\\\\$(BLU)__$(RES)\\/\\\\\\$(BLU)______$(RES)\\//\\\\\\$(BLU)_$(RES)       '; \
@@ -118,13 +125,13 @@ ${NAME}: ${OBJS}
 clean:
 	@make -C lib/libft clean
 	@make -C lib/mlx clean
-	@echo "$(BRED)mlx Clean....$(RES)"
+	@echo "$(BYEL)Mlx Clean....$(RES)"
 	@$(RM) $(OBJ_DIR)
+	@$(CLEAN)
+
 fclean: clean
 	@make -C lib/libft fclean
 	@$(RM) $(NAME)
+	@$(FCLEAN)
 
 re: fclean all
-
-
-

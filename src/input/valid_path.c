@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   valid_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/15 22:11:21 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/14 23:45:56 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/15 23:41:14 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	free_twod_str(char	**str)
+static int	check_valid_path(const char *path)
 {
-	int	i;
+	char	*tmp;
 
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	tmp = (char *)path;
+	if (!ft_strncmp(tmp + ft_strlen(tmp) - 4, ".cub", 5))
+		return (1);
+	return (0);
+}
+
+void	valid_path(const char *path)
+{
+	int	error;
+
+	error = 0;
+	if (!check_valid_path(path))
+		error++ ;
+	if (error != 0)
+		print_msg_err("incorrect path!!");
+	return ;
 }
