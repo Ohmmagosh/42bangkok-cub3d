@@ -1,58 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   st_cub3d.h                                         :+:      :+:    :+:   */
+/*   valid_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:35:45 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/14 23:45:56 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/15 23:41:14 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ST_CUB3D_H
-# define ST_CUB3D_H
+#include "../../cub3d.h"
 
-typedef struct s_vec
+static int	check_valid_path(const char *path)
 {
-	float	x;
-	float	y;
-	float	z;
-} t_vec;
+	char	*tmp;
 
-typedef struct s_map
+	tmp = (char *)path;
+	if (!ft_strncmp(tmp + ft_strlen(tmp) - 4, ".cub", 5))
+		return (1);
+	return (0);
+}
+
+void	valid_path(const char *path)
 {
-	char	**map;
-} t_map;
+	int	error;
 
-typedef struct s_spt
-{
-	t_vec	axis;
-} t_spt;
-
-typedef struct s_tex
-{
-
-} t_tex;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-} t_mlx;
-
-typedef struct s_var
-{
-	char	*file;
-
-
-} t_var;
-
-typedef struct s_pro
-{
-	t_mlx	mlx;
-	t_map	map;
-} t_pro;
-
-
-#endif
+	error = 0;
+	if (!check_valid_path(path))
+		error++ ;
+	if (error != 0)
+		print_msg_err("incorrect path!!");
+	return ;
+}

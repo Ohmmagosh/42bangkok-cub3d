@@ -6,7 +6,7 @@
 #    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/01 23:10:55 by psuanpro          #+#    #+#              #
-#    Updated: 2022/12/16 17:12:06 by psuanpro         ###   ########.fr        #
+#    Updated: 2023/03/16 00:29:44 by psuanpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,9 +94,6 @@ $(NAME): $(SRCS)
 
 all: $(NAME)
 
-# bonus: $(BONUS_SRCS)
-# 	@$(CC) -c $(BONUS_SRCS)
-# 	@$(LIBC) $(NAME) *.o
 
 clean:
 	@$(RM) *.o

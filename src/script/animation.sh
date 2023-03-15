@@ -69,7 +69,7 @@ animation () {
 for i in $@ ; do
 	echo -e "$i";
 	animation;
-	sleep 0.05;
+	sleep 0.02;
 done
 
 

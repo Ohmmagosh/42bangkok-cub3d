@@ -1,58 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   st_cub3d.h                                         :+:      :+:    :+:   */
+/*   valid_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:35:45 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/14 23:47:42 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/15 01:23:13 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ST_CUB3D_H
-# define ST_CUB3D_H
+#include "../../cub3d.h"
 
-typedef struct s_vec
+static int	open_file(const char *path)
 {
-	float	x;
-	float	y;
-	float	z;
-} t_vec;
+	int	fd;
 
-typedef struct s_map
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		return (0);
+	}
+	close(fd);
+	return (1);
+}
+
+void	valid_file(const char *path)
 {
-	char	**map;
-} t_map;
+	int error;
 
-typedef struct s_spt
-{
-	t_vec	axis;
-} t_spt;
-
-typedef struct s_tex
-{
-
-} t_tex;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-} t_mlx;
-
-typedef struct s_var
-{
-	char	*file;
-
-
-} t_var;
-
-typedef struct s_pro
-{
-	t_mlx	mlx;
-	t_map	map;
-} t_pro;
-
-
-#endif
+	error = 0;
+	if (!open_file(path))
+		error++ ;
+	if (error != 0)
+		print_msg_err("file not found!!");
+	return ;
+}

@@ -6,12 +6,20 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/14 22:02:06 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:11:21 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	free_cube(t_pro *p){
+void	free_twod_str(char	**str)
+{
+	int	i;
 
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
