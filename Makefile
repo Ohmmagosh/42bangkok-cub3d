@@ -22,6 +22,8 @@ SRC_DIR		= ./src/
 
 MODULE1		= input.c \
 				valid_texture.c \
+				valid_texture_utils.c \
+				valid_texture_utils1.c \
 				valid_map.c \
 				valid_map_utils.c \
 				valid_path.c \
@@ -31,10 +33,13 @@ MODULE2		= process.c
 
 MODULE3		= free.c
 
-MODULE4		= init.c
+MODULE4		= init.c \
+				init_utils.c
 
 MODULE5		= print_msg_utils.c \
-				print_str.c
+				print_str.c \
+				file_utils.c \
+				str_utils.c
 
 
 MODULE1_DIR	= ./src/input/
@@ -104,7 +109,7 @@ ${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
 	$(CC) -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
-	@$(LOAD)
+	#@$(LOAD)
 	@sleep 0.5
 	@$(CUBE)
 
