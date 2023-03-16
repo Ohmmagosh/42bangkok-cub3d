@@ -6,8 +6,13 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:16:37 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:16:50 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:42:51 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../cub3d.h"
+
+void	valid_map(const char *path)
+{
+	return ;
+}

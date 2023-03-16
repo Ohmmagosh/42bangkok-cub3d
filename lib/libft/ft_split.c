@@ -72,20 +72,22 @@ char	**ft_split(char *s, char c)
 	char	**array;
 	int		i;
 	int		sl;
+	char	*tmp;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	sl = ft_countword(s, c);
-	array = (char **)malloc(ft_countword(s, c) * (sizeof(char *)));
+	tmp = (char *)s;
+	sl = ft_countword(tmp, c);
+	array = (char **)malloc(ft_countword(tmp, c) * (sizeof(char *)));
 	if (!array)
 		return (NULL);
 	while (i < sl - 1)
 	{
-		while (*s == c)
-			s++;
-		array[i] = ft_getword(s, c);
-		s += ft_countcword(s, c);
+		while (*tmp == c)
+			tmp++;
+		array[i] = ft_getword(tmp, c);
+		tmp += ft_countcword(tmp, c);
 		i++;
 	}
 	array[i] = NULL;

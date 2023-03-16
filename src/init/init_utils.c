@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 22:01:50 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/16 01:38:55 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/16 01:53:40 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	free_twod_str(char	**str)
+t_txd	init_t_txd( void )
 {
-	int	i;
+	t_txd	tdetail;
 
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		str[i] = NULL;
-		i++;
-	}
-	free(str);
-	str = NULL;
+	tdetail.direct = NULL;
+	tdetail.path = NULL;
+	return (tdetail);
 }
 
-void	free_threed_str(char ***str)
+t_tex	init_t_tex( void )
 {
-	int i;
+	t_tex	texture;
 
-	i = 0;
-	while (str[i])
-	{
-		free_twod_str(str[i]);
-		str[i] = NULL;
-		i++ ;
-	}
-	free(str);
+	texture.ea = init_t_txd();
+	texture.no = init_t_txd();
+	texture.so = init_t_txd();
+	texture.we = init_t_txd();
+	return (texture);
+}
+
+t_txd	init_t_txd_v(char *direct, char *path)
+{
+	t_txd	tdtail;
+
+	tdtail.direct = ft_strdup(direct);
+	tdtail.path = ft_strdup(path);
+	return (tdtail);
 }

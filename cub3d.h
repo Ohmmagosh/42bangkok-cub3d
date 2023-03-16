@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:15:52 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:42:41 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,36 @@
 
 //init
 void	init_cube(t_pro *p);
+t_txd	init_t_txd( void );
+t_tex	init_t_tex( void );
+t_txd	init_t_txd_v(char *direct, char *path);
 
 //input
+int		valid_path_texture(const char **file);
+char	**get_file_fd(const char *path);
+char	**get_texture_2d(char *texture, const char **file);
 void	input_cube(t_pro *p, char *path);
 void	valid_path(const char *path);
 void	valid_file(const char *path);
-void	valid_map(char *path);
+void	valid_map(const char *path);
 void	valid_texture(const char *path);
-char	**get_file_fd(const char *path);
+int		valid_color(const char **file);
+int		valid_color_num(t_col color);
+t_txd	get_texture(char *texture, const char **file);
+t_txd	split_texture_path(char *texture);
 
 //process
 void	process_cube(t_pro *p);
 
 //free
 void	free_twod_str(char	**str);
-
+void	free_threed_str(char ***str);
 
 //uitls
 int		lenx_map(const char *path);
 int		leny_map(const char *path);
+int		open_file(const char *path);
+int		len_str_2d(const char **str);
 void	print_msg_err(char *msg);
 void	msg_err(char *msg);
 void	print_twod_str(const char **str);
