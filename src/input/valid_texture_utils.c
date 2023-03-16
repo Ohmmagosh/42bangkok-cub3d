@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:54:54 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 22:05:29 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/17 01:13:50 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,6 @@ t_txd	get_texture(char *texture, const char **file)
 		i++;
 	}
 	return (tdetail);
-}
-
-char	*ft_strdup_nonl(char *s)
-{
-	char	*ret;
-	int		i;
-
-	i = 0;
-	ret = (char *)malloc(sizeof(char *) * (ft_strlen_gnl(s) + 1));
-	while (s[i] && s[i] != '\n')
-	{
-		ret[i] = s[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
 }
 
 t_txd	split_texture_path(char *texture)
