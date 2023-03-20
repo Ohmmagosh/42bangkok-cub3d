@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   st_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:35:45 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:31:13 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,24 @@
 
 typedef struct s_vec
 {
-	float	x;
-	float	y;
-	float	z;
+	int	x;
+	int	y;
+	int	z;
 } t_vec;
+
+typedef struct s_xy
+{
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+
+} t_xy;
 
 typedef struct s_map
 {
 	char	**map;
-} t_map;
+}	t_map;
 
 typedef struct s_spt
 {
@@ -35,10 +44,20 @@ typedef struct s_tex
 
 } t_tex;
 
+typedef struct	s_myimg
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_myimg;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
+	t_myimg	img;
 } t_mlx;
 
 typedef struct s_var

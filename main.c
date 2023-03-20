@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/15 22:17:17 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/16 00:41:00 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		init_cube(&p);
-		input_cube(&p, av[1]);
-		//process_cube(&p);
+		// init_cube(&p);
+		// input_cube(&p, av[1]);
+		process_cube(&p);
 		//free_cube(&p);
 	}
 	else{

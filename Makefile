@@ -104,7 +104,7 @@ ${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
 	$(CC) -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
-	@$(LOAD)
+	# @$(LOAD)
 	@sleep 0.5
 	@$(CUBE)
 
