@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/20 15:31:13 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/20 21:18:32 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
+	t_xy	*txy;
 	t_myimg	img;
 } t_mlx;
 
