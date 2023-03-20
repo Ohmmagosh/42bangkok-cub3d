@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:16:37 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/17 01:54:54 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/18 03:19:35 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ int	find_str_line(char *texture, const char **file)
 		len++ ;
 	}
 	return (len);
-}
-
-int	is_inarray(const int *array, int nbr, size_t size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (array[i] == nbr)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	*is_direction_col(const char **file)
