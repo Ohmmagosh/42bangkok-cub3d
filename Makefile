@@ -27,7 +27,8 @@ MODULE1		= input.c \
 				valid_path.c \
 				valid_file.c
 
-MODULE2		= process.c
+MODULE2		= process.c \
+				camera.c
 
 MODULE3		= free.c
 

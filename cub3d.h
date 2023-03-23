@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 00:15:52 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:38:46 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@
 # include <fcntl.h>
 # include "./st_cub3d.h"
 
+float	g_xstart;
+float	g_ystart;
+float	g_angle;
+
 //init
 void	init_cube(t_pro *p);
+void	init_xyangle();
 
 //input
 void	input_cube(t_pro *p, char *path);
@@ -36,6 +41,9 @@ char	**get_file_fd(const char *path);
 
 //process
 void	process_cube(t_pro *p);
+void	anglechange(int keycode, t_pro *p);
+void	draw_line(t_mlx *tmlx, t_xy *txy,float ang);
+void	movechange(int keycode, t_pro *p);
 
 //free
 void	free_twod_str(char	**str);

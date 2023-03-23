@@ -6,14 +6,12 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/21 00:23:31 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:47:46 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <math.h>
-
-	float angle = 90;
 
 # define WIN_WIDTH 500
 # define WIN_HEIGHT 500
@@ -27,7 +25,7 @@ void get_point_on_circle(t_xy *txy, float angle)
 	txy->y2 = txy->y1 + 10 * sin(angle);
 }
 
-void	draw_line(t_mlx *tmlx, t_xy *txy, float ang)
+void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
 {
 	float	dx;
 	float	dy;
@@ -35,7 +33,7 @@ void	draw_line(t_mlx *tmlx, t_xy *txy, float ang)
 	float	sy;
 	float	err;
 
-	get_point_on_circle(txy, angle);
+	get_point_on_circle(txy, ang);
 	dx = fabsf(txy->x2 - txy->x1);
 	dy = fabsf(txy->y2 - txy->y1);
 	if (txy->x1 < txy->x2)
@@ -47,9 +45,11 @@ void	draw_line(t_mlx *tmlx, t_xy *txy, float ang)
 	else
 		sy = -1;
 	err = dx - dy;
+	txy->x1 += g_xstart;
+	txy->y1 += g_ystart;
 	while (txy->x1 != 0 && txy->x1 != WIN_WIDTH && txy->y1 != 0 && txy->y1 != WIN_HEIGHT)
 	{
-		mlx_pixel_put(tmlx->mlx, tmlx->win, txy->x1, txy->y1, COLOR);
+		mlx_pixel_put(tmlx->mlx, tmlx->win, (int)txy->x1, (int)txy->y1, COLOR);
 		if (err * 2 > -dy)
 		{
 			err -= dy;
@@ -61,36 +61,16 @@ void	draw_line(t_mlx *tmlx, t_xy *txy, float ang)
 			txy->y1 += sy;
 		}
 	}
-	printf("x1 = %f y1 = %f x2 = %f y2 = %f\n", txy->x1, txy->y1, txy->x2, txy->y2);
-	// mlx_put_image_to_window(tmlx->mlx, tmlx->win, tmlx->img.img, 500, 500);
+	txy->x1 = 1;
+	txy->y1 = 1;
 }
 
 int rotate_hook(int keycode, t_pro *p)
 {
-	if (keycode == 2)
-	{
-		// mlx_destroy_image(p->mlx.mlx,p->mlx.img.img);
-		// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-		// p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
-		// mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 500, 500);
-		angle++;
-		draw_line(p->mlx.mlx, p->mlx.txy, angle);
-		printf("zzzz\n");
-		// mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 500, 500);
-		printf("keykode = %d angle = %f\n", keycode, angle);
-	}
-	else if (keycode == 0)
-	{
-		// mlx_destroy_image(p->mlx.mlx,p->mlx.img.img);
-		// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-		// p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
-		// mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 500, 500);
-		angle--;
-		draw_line(p->mlx.mlx, p->mlx.txy, angle);
-		printf("zzzz\n");
-		// mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 500, 500);
-		printf("keykode = %d angle = %f\n", keycode, angle);
-	}
+	if (keycode == 124 || keycode == 123)
+		anglechange(keycode, p);
+	else if (keycode == 0 || keycode == 2 || keycode == 1 || keycode == 13)
+		movechange(keycode, p);
 	else
 		printf("keykode = %d\n", keycode);
 	return 0;
@@ -98,8 +78,8 @@ int rotate_hook(int keycode, t_pro *p)
 
 void	xy_become_start(t_xy *txy, int xstart, int ystart)
 {
-	txy->x1 = xstart;
-	txy->y1 = ystart;
+	txy->x1 = 1;
+	txy->y1 = 1;
 }
 
 void	circle(t_pro *p, t_xy *txy)
@@ -127,25 +107,27 @@ void	circle(t_pro *p, t_xy *txy)
 
 void	process_cube(t_pro *p)
 {
-	int		xstart = 250;
-	int		ystart = 250;
 	t_xy	*txy;
+	t_hwa	*hwa;
 
+	hwa = malloc(sizeof(t_hwa));
 	txy = malloc(sizeof(t_xy));
 	p->mlx.txy = txy;
 	txy->x2 = 0;
 	txy->x2 = 0;
 
 	p->mlx.mlx = mlx_init();
-	p->mlx.win = mlx_new_window(p->mlx.mlx,WIN_WIDTH,  WIN_HEIGHT, "My Window");
+	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH,  WIN_HEIGHT, "My Window");
+	printf("test\n");
 	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
+	p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, \
+		&p->mlx.img.line_length, &p->mlx.img.endian);
 
-	xy_become_start(txy, xstart,ystart);
-	circle(p,txy);
-	draw_line(&p->mlx, txy, angle);
-	xy_become_start(txy, xstart,ystart);
+	xy_become_start(txy, hwa->xstart, hwa->ystart);
+	// circle(p,txy);
+	draw_line(&p->mlx, txy, hwa->angle);
+	xy_become_start(txy, hwa->xstart, hwa->ystart);
 	mlx_hook(p->mlx.win, 2, 0, rotate_hook, p);
-	xy_become_start(txy, xstart,ystart);
+	xy_become_start(txy, hwa->xstart, hwa->ystart);
 	mlx_loop(p->mlx.mlx);
 }

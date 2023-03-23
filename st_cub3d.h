@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/20 21:18:32 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:24:38 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef struct s_tex
 
 } t_tex;
 
+typedef struct	s_hwa
+{
+	float	xstart;
+	float	ystart;
+	float	angle;
+} t_hwa;
+
 typedef struct	s_myimg
 {
 	void	*img;
@@ -59,6 +66,7 @@ typedef struct s_mlx
 	void	*win;
 	t_xy	*txy;
 	t_myimg	img;
+	t_hwa	*hwa;
 } t_mlx;
 
 typedef struct s_var

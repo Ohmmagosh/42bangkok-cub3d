@@ -6,11 +6,18 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:39:07 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/20 13:54:57 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:47:21 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void	init_xyangle()
+{
+	g_xstart = 250;
+	g_ystart = 250;
+	g_angle = 270;
+}
 
 void	init_mlx_st(t_mlx *mlx)
 {
