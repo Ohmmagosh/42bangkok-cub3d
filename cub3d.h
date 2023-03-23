@@ -6,12 +6,16 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 14:38:46 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:29:43 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define WIN_WIDTH 500
+# define WIN_HEIGHT 500
+# define COLOR 0xFFFFFF
 
 # include "color.h"
 # include <stdio.h>
@@ -26,6 +30,8 @@
 float	g_xstart;
 float	g_ystart;
 float	g_angle;
+int		g_gridsize;
+int		g_linecounter;
 
 //init
 void	init_cube(t_pro *p);
@@ -44,6 +50,7 @@ void	process_cube(t_pro *p);
 void	anglechange(int keycode, t_pro *p);
 void	draw_line(t_mlx *tmlx, t_xy *txy,float ang);
 void	movechange(int keycode, t_pro *p);
+void	showgrid(t_mlx *mlx);
 
 //free
 void	free_twod_str(char	**str);

@@ -10,19 +10,19 @@ void	anglechange(int keycode, t_pro *p)
 		g_angle -= 2;
 	else if (keycode == 124)
 		g_angle += 2;
-	newan = g_angle + 15;
-	while (newan >= g_angle)
-	{
-		draw_line(&p->mlx, p->mlx.txy, newan);
-		newan -= 0.5;
-	}
-	p->mlx.txy->x1 = 1;
-	p->mlx.txy->y1 = 1;
+	// newan = g_angle + 15;
+	// while (newan >= g_angle)
+	// {
+	// 	draw_line(&p->mlx, p->mlx.txy, newan);
+	// 	newan -= 5;
+	// }
+	// p->mlx.txy->x1 = 1;
+	// p->mlx.txy->y1 = 1;
 	newan = g_angle - 15;
-	while (newan < g_angle)
+	while (newan < g_angle + 30)
 	{
 		draw_line(&p->mlx, p->mlx.txy, newan);
-		newan += 0.5;
+		newan += 5;
 	}
 	p->mlx.txy->x1 = 1;
 	p->mlx.txy->y1 = 1;
@@ -41,20 +41,20 @@ void	movechange(int keycode, t_pro *p)
 		g_ystart += 5;
 	else if (keycode == 13)
 		g_ystart -=5;
-	draw_line(&p->mlx, p->mlx.txy, g_angle);
-	newan = g_angle + 15;
-	while (newan > g_angle)
-	{
-		draw_line(p->mlx.mlx, p->mlx.txy, newan);
-		newan -= 0.5;
-	}
-	p->mlx.txy->x1 = 1;
-	p->mlx.txy->y1 = 1;
+	// draw_line(&p->mlx, p->mlx.txy, g_angle);
+	// newan = g_angle + 15;
+	// while (newan > g_angle)
+	// {
+	// 	draw_line(p->mlx.mlx, p->mlx.txy, newan);
+	// 	newan -= 5;
+	// }
+	// p->mlx.txy->x1 = 1;
+	// p->mlx.txy->y1 = 1;
 	newan = g_angle - 15;
-	while (newan < g_angle)
+	while (newan < g_angle + 30)
 	{
 		draw_line(&p->mlx, p->mlx.txy, newan);
-		newan += 0.5;
+		newan += 5;
 	}
 	p->mlx.txy->x1 = 1;
 	p->mlx.txy->y1 = 1;

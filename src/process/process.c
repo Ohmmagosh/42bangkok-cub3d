@@ -6,16 +6,16 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 14:47:46 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:49:34 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <math.h>
 
-# define WIN_WIDTH 500
-# define WIN_HEIGHT 500
-# define COLOR 0xFFFFFF
+// # define WIN_WIDTH 500
+// # define WIN_HEIGHT 500
+// # define COLOR 0xFFFFFF
 
 void get_point_on_circle(t_xy *txy, float angle)
 {
@@ -32,7 +32,10 @@ void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
 	float	sx;
 	float	sy;
 	float	err;
+	float	distance;
+	int		i;
 
+	showgrid(tmlx);
 	get_point_on_circle(txy, ang);
 	dx = fabsf(txy->x2 - txy->x1);
 	dy = fabsf(txy->y2 - txy->y1);
@@ -47,8 +50,13 @@ void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
 	err = dx - dy;
 	txy->x1 += g_xstart;
 	txy->y1 += g_ystart;
-	while (txy->x1 != 0 && txy->x1 != WIN_WIDTH && txy->y1 != 0 && txy->y1 != WIN_HEIGHT)
+	while (txy->x1 != 0 && txy->x1 != WIN_WIDTH && txy->y1 != 0 && txy->y1 != WIN_HEIGHT && txy->x1 >= (g_gridsize * 2) && txy->y1 >= (g_gridsize * 3))
 	{
+		if (txy->x1 >= (g_gridsize * 2) || txy->y1 >= (g_gridsize * 3))
+		{
+			distance = sqrt(pow((g_xstart - txy->x1), 2) + pow((g_ystart - txy->y1), 2));
+			printf("distance of line %d ---> %f\n", g_linecounter, distance);
+		}
 		mlx_pixel_put(tmlx->mlx, tmlx->win, (int)txy->x1, (int)txy->y1, COLOR);
 		if (err * 2 > -dy)
 		{
@@ -118,13 +126,12 @@ void	process_cube(t_pro *p)
 
 	p->mlx.mlx = mlx_init();
 	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH,  WIN_HEIGHT, "My Window");
-	printf("test\n");
 	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, \
 		&p->mlx.img.line_length, &p->mlx.img.endian);
 
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
-	// circle(p,txy);
+	circle(p,txy);
 	draw_line(&p->mlx, txy, hwa->angle);
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
 	mlx_hook(p->mlx.win, 2, 0, rotate_hook, p);

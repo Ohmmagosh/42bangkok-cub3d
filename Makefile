@@ -28,7 +28,8 @@ MODULE1		= input.c \
 				valid_file.c
 
 MODULE2		= process.c \
-				camera.c
+				camera.c \
+				mapshow.c
 
 MODULE3		= free.c
 
