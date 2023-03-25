@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:46:15 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/21 00:15:16 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:52:20 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	valid_color(const char **file)
 	char	***texture;
 
 	err = 0;
-	texture = (char ***)malloc(sizeof(char **) * (2));
+	texture = (char ***)malloc(sizeof(char **) * (3));
 	if (!texture)
 		return (1);
 	texture[0] = get_texture_2d("F ", file);

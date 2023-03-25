@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 23:54:17 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/21 00:17:57 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:35:08 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_tex	set_tex(const char **file)
 	t_tex	ret;
 	char	***texture;
 
-	texture = (char ***)malloc(sizeof(char **) * (2));
+	texture = (char ***)malloc(sizeof(char **) * (3));
 	texture[0] = get_texture_2d("F ", file);
 	texture[1] = get_texture_2d("C ", file);
 	texture[2] = NULL;

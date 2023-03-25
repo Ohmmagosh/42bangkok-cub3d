@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:28:09 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/21 00:11:32 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/25 19:45:53 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	**set_map_str(const char **map, int *num_space, int len)
 	int		j;
 
 	i = 0;
+	j = 0;
+	ret = NULL;
 	size = (len_str_2d(map) - len + 1);
 	ret = (char **)malloc(sizeof(char *) * (size));
 	while (map[i] && j < size)
@@ -82,6 +84,8 @@ char	**clean_space(const char **map)
 	int		len;
 
 	i = 0;
+	len = 0;
+	ret = NULL;
 	num_space = set_numspace_array(map, &len);
 	ret = set_map_str(map, num_space ,len);
 	return (ret);
@@ -93,11 +97,16 @@ t_map	set_map(const char *path)
 	char	**file;
 	char	**map_str;
 
+	map_str = NULL;
+	file = NULL;
 	init_map_st(&map);
 	file = get_file_fd(path);
 	map_str = get_map((const char **)file);
-	print_twod_str((const char **)map_str);
 	map.map = clean_space((const char **)map_str);
-	map.tex = set_tex((const char **)map_str);
+	map.tex = set_tex((const char **)file);
+	free_twod_str(map_str);
+	free_twod_str(file);
+	map_str = NULL;
+	file = NULL;
 	return (map);
 }

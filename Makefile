@@ -138,7 +138,7 @@ clean:
 	@make -C lib/libft clean
 	@make -C lib/mlx clean
 	@echo "$(BYEL)Mlx Clean....$(RES)"
-	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJ_DIR) *.dSYM
 	@$(CLEAN)
 
 fclean: clean
