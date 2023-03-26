@@ -24,7 +24,7 @@ void showgrid(t_mlx *mlx)
 	}
 	x = 0;
 	y = 0;
-	while (x < WIN_WIDTH)
+	while (x < (WIN_WIDTH / 2))
 	{
 		mlx_pixel_put(mlx->mlx, mlx->win, x , y + (g_gridsize * 3), COLOR);
 		// distance = g_xstart

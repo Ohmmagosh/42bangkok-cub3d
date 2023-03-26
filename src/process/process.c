@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 22:49:34 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/26 22:21:59 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void get_point_on_circle(t_xy *txy, float angle)
 	txy->y2 = txy->y1 + 10 * sin(angle);
 }
 
-void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
+void	draw_line(t_mlx *tmlx, t_xy *txy,float ang, int ladex)
 {
 	float	dx;
 	float	dy;
@@ -50,14 +50,20 @@ void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
 	err = dx - dy;
 	txy->x1 += g_xstart;
 	txy->y1 += g_ystart;
-	while (txy->x1 != 0 && txy->x1 != WIN_WIDTH && txy->y1 != 0 && txy->y1 != WIN_HEIGHT && txy->x1 >= (g_gridsize * 2) && txy->y1 >= (g_gridsize * 3))
+	while (txy->x1 != 0 && txy->x1 != (WIN_WIDTH / 2) && txy->y1 != 0 && txy->y1 != WIN_HEIGHT && txy->x1 >= (g_gridsize * 2) && txy->y1 >= (g_gridsize * 3))
 	{
-		if (txy->x1 >= (g_gridsize * 2) || txy->y1 >= (g_gridsize * 3))
+		// if (txy->x1 >= (g_gridsize * 2) || txy->y1 >= (g_gridsize * 3))
+		// {
+		// 	printf("distance of line %d ---> %f\n", g_linecounter, distance);
+		// }
+		mlx_pixel_put(tmlx->mlx, tmlx->win, txy->x1, txy->y1, COLOR);
+		if (ladex != -1)
 		{
-			distance = sqrt(pow((g_xstart - txy->x1), 2) + pow((g_ystart - txy->y1), 2));
-			printf("distance of line %d ---> %f\n", g_linecounter, distance);
+			// printf("%d\n", ladex);
+			tmlx->larray[ladex].x2 = txy->x1;
+			tmlx->larray[ladex].y2 = txy->y1;
+		// 	printf("larray[%d]. x2 = %f . y2 = %f\n", ladex, tmlx->larray[ladex].x2, tmlx->larray[ladex].y2);
 		}
-		mlx_pixel_put(tmlx->mlx, tmlx->win, (int)txy->x1, (int)txy->y1, COLOR);
 		if (err * 2 > -dy)
 		{
 			err -= dy;
@@ -69,6 +75,14 @@ void	draw_line(t_mlx *tmlx, t_xy *txy,float ang)
 			txy->y1 += sy;
 		}
 	}
+	// if (txy->x1 == 0 || txy->x1 == WIN_WIDTH || txy->y1 == 0 || txy->y1 == WIN_HEIGHT || txy->x1 < (g_gridsize * 2) || txy->y1 < (g_gridsize * 3))
+	// {
+		if (ladex >= 0)
+		{
+			tmlx->larray[ladex].distance = sqrt(pow((g_xstart - tmlx->larray[ladex].x2), 2) + pow((g_ystart - tmlx->larray[ladex].y2), 2));
+			printf("line array [%d] x = %f y = %f distance %f\n", ladex, tmlx->larray[ladex].x2, tmlx->larray[ladex].y2, tmlx->larray[ladex].distance);
+		}
+	// }
 	txy->x1 = 1;
 	txy->y1 = 1;
 }
@@ -117,12 +131,15 @@ void	process_cube(t_pro *p)
 {
 	t_xy	*txy;
 	t_hwa	*hwa;
+	// int		i;
 
+	// i = 0;
 	hwa = malloc(sizeof(t_hwa));
 	txy = malloc(sizeof(t_xy));
 	p->mlx.txy = txy;
 	txy->x2 = 0;
 	txy->x2 = 0;
+	hwa->angle = 270;
 
 	p->mlx.mlx = mlx_init();
 	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH,  WIN_HEIGHT, "My Window");
@@ -130,9 +147,17 @@ void	process_cube(t_pro *p)
 	p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, \
 		&p->mlx.img.line_length, &p->mlx.img.endian);
 
+	// while (i < 7)
+	// {
+	// 	printf ("bfore i\n");
+	// 	p->mlx.larray[i].linenum = i;
+	// 	printf ("aftr i\n");
+	// }
+
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
-	circle(p,txy);
-	draw_line(&p->mlx, txy, hwa->angle);
+	// circle(p,txy);
+	ini_ray(p);
+	// draw_line(&p->mlx, txy, hwa->angle, -1);
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
 	mlx_hook(p->mlx.win, 2, 0, rotate_hook, p);
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
