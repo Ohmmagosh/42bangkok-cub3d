@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/26 22:57:33 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/27 20:09:20 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	movechange(int keycode, t_pro *p);
 void	showgrid(t_mlx *mlx);
 void	draw_wall(t_mlx *tmlx);
 void	ini_ray(t_pro *p);
-t_xy	get_point_on_circle2(float x, float y, float angle)
+t_xy	get_point_on_circle2(float x, float y, float angle, int radiant);
+t_xy	draw_core(t_mlx *tmlx, float g_x, float g_y, float g_angle);
+void	draw_plane(t_mlx *tmlx, float g_x, float g_y, float g_angle);
 
 //free
 void	free_twod_str(char	**str);

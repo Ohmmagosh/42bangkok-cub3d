@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/26 22:21:59 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:21:25 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ void	process_cube(t_pro *p)
 	// circle(p,txy);
 	ini_ray(p);
 	// draw_line(&p->mlx, txy, hwa->angle, -1);
+	// draw_plane(&p->mlx, g_xstart, g_ystart, g_angle);
 	xy_become_start(txy, hwa->xstart, hwa->ystart);
 	mlx_hook(p->mlx.win, 2, 0, rotate_hook, p);
 	xy_become_start(txy, hwa->xstart, hwa->ystart);

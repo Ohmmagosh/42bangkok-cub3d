@@ -30,6 +30,8 @@ void	anglechange(int keycode, t_pro *p)
 	p->mlx.txy->x1 = 1;
 	p->mlx.txy->y1 = 1;
 	draw_wall(&p->mlx);
+	// draw_core(&p->mlx, g_xstart, g_ystart, g_angle);
+	draw_plane(&p->mlx, g_xstart, g_ystart, g_angle);
 }
 
 void	movechange(int keycode, t_pro *p)
@@ -66,6 +68,8 @@ void	movechange(int keycode, t_pro *p)
 	p->mlx.txy->x1 = 1;
 	p->mlx.txy->y1 = 1;
 	draw_wall(&p->mlx);
+	// draw_core(&p->mlx, g_xstart, g_ystart, g_angle);
+	draw_plane(&p->mlx, g_xstart, g_ystart, g_angle);
 }
 
 void	ini_ray(t_pro *p)

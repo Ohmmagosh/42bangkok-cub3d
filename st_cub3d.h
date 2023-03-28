@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 23:22:31 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:38:23 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ typedef struct s_xy
 	float	y2;
 
 } t_xy;
+
+typedef struct s_coord{
+    float x;
+    float y;
+} t_coord;
+
+typedef struct s_line
+{
+	struct t_coord p1;
+	struct t_coord p2;
+
+}	t_Line;
 
 typedef struct s_linearray
 {
