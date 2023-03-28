@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:38:55 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/18 03:22:29 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:19:12 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	*init_array_int(int size)
 {
 	int	*ret;
 
+	ret = 0;
 	ret = (int *)malloc(sizeof(int) * size);
+	if (!ret)
+		return (0);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 22:09:19 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/26 22:13:38 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	process_cube(t_pro *p);
 //free
 void	free_twod_str(char	**str);
 void	free_threed_str(char ***str);
+void	free_cube(t_pro *p);
 
 //uitls
 int		lenx_map(const char *path);

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:44:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/18 03:43:38 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:04:21 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		init_cube(&p);
 		input_cube(&p, av[1]);
 		//process_cube(&p);
-		//free_cube(&p);
+		free_cube(&p);
 	}
 	else{
 		print_msg_err("wrong argument!!");

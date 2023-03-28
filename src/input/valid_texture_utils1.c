@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:46:15 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/21 20:52:20 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:24:08 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_col	get_color_t_col(const char *color)
 	col.g = ft_atoi(rgb[1]);
 	col.b = ft_atoi(rgb[2]);
 	free_twod_str(rgb);
+	//free(rgb);
 	rgb = NULL;
 	return (col);
 }

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 19:12:10 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:41:28 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_vec
 typedef struct s_spt
 {
 	t_vec	axis;
+	int		di;
 } t_spt;
 
 typedef struct s_col

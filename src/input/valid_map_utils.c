@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 23:23:03 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/17 01:57:46 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:25:11 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	valid_map_char_dup(const char **file)
 	token[2] = len_map_token(map, 'W');
 	token[3] = len_map_token(map, 'S');
 	free_twod_str(map);
+	//free(map);
 	map = NULL;
 	while (i < 4)
 	{
@@ -110,6 +111,7 @@ int	valid_map_char(const char **file)
 		i++ ;
 	}
 	free_twod_str(map);
+	//free(map);
 	map = NULL;
 	if (err)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:16:37 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/25 02:00:23 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:44:56 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	*is_direction_col(const char **file)
 
 	direct_color = (int *)malloc(sizeof(int) * 6);
 	if (!direct_color)
-		return (NULL);
+		return (0);
 	direct_color[0] = find_str_line("NO ", file);
 	direct_color[1] = find_str_line("SO ", file);
 	direct_color[2] = find_str_line("WE ", file);
@@ -55,6 +55,8 @@ char	**get_map(const char **file)
 	copy = 0;
 	di_col = is_direction_col(file);
 	ret = (char **)malloc(sizeof(char *) * (len_str_2d(file) - 5));
+	if (!ret)
+		return (NULL);
 	while (file[i])
 	{
 		if (!is_inarray((const int *)di_col, i, 6))
@@ -132,7 +134,9 @@ int	len_max_y(char **map)
 	int	y;
 
 	y = 0;
-	while (map[y])
+	if (map || map[0] == NULL)
+		return (0);
+	while (map[y] && map[y] != (void *)NULL)
 		y++ ;
 	return (y);
 }
@@ -142,9 +146,9 @@ int	len_max(char **map, int mode)
 	if (!map)
 		return (-1);
 	if (mode == 0)
-		return strlen_no_nl(map[0]);
+		return (strlen_no_nl(map[0]));
 	else if (mode == 1)
-		return len_max_y(map);
+		return (len_max_y(map));
 	return (-1);
 }
 
@@ -179,6 +183,8 @@ int	valid_map_wall(const char **file)
 	err = valid_flood_fill(map_flood);
 	free_twod_str(map_str);
 	free_twod_str(map_flood);
+	//free(map_str);
+	//free(map_flood);
 	map_flood = NULL;
 	map_str = NULL;
 	if (err)
@@ -190,9 +196,9 @@ void	valid_map(const char *path)
 {
 	char	**file;
 	int		err_len;
-	char	**map;
 
 	err_len = 0;
+	file = NULL;
 	file = get_file_fd(path);
 	if (valid_map_char((const char **)file))
 		err_len++ ;
@@ -203,6 +209,7 @@ void	valid_map(const char *path)
 	if (valid_map_wall((const char **)file))
 		err_len++ ;
 	free_twod_str(file);
+	//free(file);
 	file = NULL;
 	if (err_len != 0)
 		print_msg_err("map incorrect");

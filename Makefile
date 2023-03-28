@@ -17,6 +17,7 @@ MAIN_DIR	= ./
 
 CC			= gcc
 CFLAGS		= -g -Wall -Werror -Wextra -Imlx
+#CFLAGS		= -g -Wall -Werror -Wextra
 
 SRC_DIR		= ./src/
 
@@ -113,7 +114,7 @@ ${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
 	$(CC) -g -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
-	#@$(LOAD)
+#@$(LOAD)
 	@sleep 0.5
 	@$(CUBE)
 
@@ -127,9 +128,9 @@ ${OBJ_DIR}%.o: ${MAIN_DIR}%.c
 
 ${NAME}: ${OBJS}
 	@make -C lib/libft
-	#@make -C lib/mlx
-	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
-	#$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
+#@make -C lib/mlx
+	$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
+#$(CC) $(OBJS) -o $(INCLUDE_MLX) $(NAME) $(LIB) $(CFLAGS)
 
 run:
 	./cub3d map/minimalist.cub
@@ -138,7 +139,8 @@ clean:
 	@make -C lib/libft clean
 	@make -C lib/mlx clean
 	@echo "$(BYEL)Mlx Clean....$(RES)"
-	@$(RM) $(OBJ_DIR) *.dSYM
+	@$(RM) $(OBJ_DIR)
+	@$(RM) *.dSYM
 	@$(CLEAN)
 
 fclean: clean

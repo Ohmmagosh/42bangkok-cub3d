@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 20:56:28 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 22:51:15 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 02:01:59 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@ char	*ft_strdup_nonl(char *s)
 {
 	char	*ret;
 	int		i;
+	int		len;
 
 	i = 0;
-	ret = (char *)malloc(sizeof(char *) * (strlen_no_nl(s) + 1));
+	len = strlen_no_nl(s);
+	ret = NULL;
+	ret = (char *)malloc(sizeof(char *) * (len + 1));
 	if (!ret)
 		return (NULL);
-	while (s[i] && s[i] != '\n')
+	while (s[i] && s[i] != '\n' && i < len)
 	{
 		ret[i] = s[i];
 		i++;

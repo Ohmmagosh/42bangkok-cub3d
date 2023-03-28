@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 23:45:53 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/18 04:17:05 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:25:49 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	valid_texture(const char *path)
 	if (valid_color((const char **)file))
 		err_len++ ;
 	free_twod_str(file);
+	//free(file);
+	file = NULL;
 	if (err_len != 0)
 		print_msg_err("texture incorrect");
 	return ;

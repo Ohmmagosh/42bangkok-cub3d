@@ -6,7 +6,7 @@
 #    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/01 23:10:55 by psuanpro          #+#    #+#              #
-#    Updated: 2023/03/18 03:57:19 by psuanpro         ###   ########.fr        #
+#    Updated: 2023/03/26 18:02:33 by psuanpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ COMPILE = echo "$(BGRN)Libft compiled....$(RES)"
 CLEAN = echo "$(BYEL)Libft clean....$(RES)"
 FCLEAN = echo "$(BRED)Libft fclean....$(RES)"
 
+OBJS = ${SRCS:.c.o}
 
 $(NAME): $(SRCS)
 	@$(CC) -c $(SRCS)
