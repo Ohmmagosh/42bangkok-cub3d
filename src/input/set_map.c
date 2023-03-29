@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:28:09 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 01:47:49 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:49:59 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	**clean_space(const char **map)
 	ret = NULL;
 	num_space = set_numspace_array(map, &len);
 	ret = set_map_str(map, num_space ,len);
+	free(num_space);
 	return (ret);
 }
 
@@ -102,12 +103,10 @@ t_map	set_map(const char *path)
 	init_map_st(&map);
 	file = get_file_fd(path);
 	map_str = get_map((const char **)file);
-	map.map = clean_space((const char **)map_str);
+ 	map.map = clean_space((const char **)map_str);
 	map.tex = set_tex((const char **)file);
 	free_twod_str(map_str);
 	free_twod_str(file);
-	//free(map_str);
-	//free(file);
 	map_str = NULL;
 	file = NULL;
 	return (map);

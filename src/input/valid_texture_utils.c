@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:54:54 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 01:25:38 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:30:14 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_txd	split_texture_path(char *texture)
 	tdetail.path = ft_strdup_nonl(split[1]);
 	free_twod_str(split);
 	//free(split);
-	//split = NULL;
+	split = NULL;
 	return (tdetail);
 }
 

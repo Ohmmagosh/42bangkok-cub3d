@@ -16,8 +16,8 @@ MAIN		= main.c
 MAIN_DIR	= ./
 
 CC			= gcc
-CFLAGS		= -g -Wall -Werror -Wextra -Imlx
-#CFLAGS		= -g -Wall -Werror -Wextra
+#CFLAGS		= -g -Wall -Werror -Wextra -Imlx
+CFLAGS		= -g -Wall -Werror -Wextra
 
 SRC_DIR		= ./src/
 
@@ -128,8 +128,8 @@ ${OBJ_DIR}%.o: ${MAIN_DIR}%.c
 
 ${NAME}: ${OBJS}
 	@make -C lib/libft
-#@make -C lib/mlx
 	$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
+#@make -C lib/mlx
 #$(CC) $(OBJS) -o $(INCLUDE_MLX) $(NAME) $(LIB) $(CFLAGS)
 
 run:
