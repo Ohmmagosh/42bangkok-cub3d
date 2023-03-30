@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:28:09 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/29 18:49:59 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/30 09:48:50 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	**set_map_str(const char **map, int *num_space, int len)
 		}
 		i++;
 	}
+	ret[size - 1] = NULL;
 	return (ret);
 }
 

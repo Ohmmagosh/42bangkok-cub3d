@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/29 19:19:17 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/30 09:57:15 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_twod_str(char	**str)
 	while (str[i])
 	{
 		free(str[i]);
-		i++;
+		i++ ;
 	}
 	free(str);
 	return ;
@@ -56,46 +56,16 @@ void	free_t_tex(t_tex *tex)
 	free(tex->we.path);
 	free(tex->ea.direct);
 	free(tex->ea.path);
-	tex->no.direct = NULL;
-	tex->no.path = NULL;
-	tex->so.direct = NULL;
-	tex->so.path = NULL;
-	tex->we.direct = NULL;
-	tex->we.path = NULL;
-	tex->ea.direct = NULL;
-	tex->ea.path = NULL;
 }
 
 void	free_t_map(t_map *map)
 {
-	//free_twod_str(map->map);
-	//int len;
-
-	//len = -1;
-
-	//if (map)
-	//{
-	//	printf("%p\n", map);
-	//	if (map->map)
-	//		printf("%p\n", map->map);
-	//}
-	//while (map->map[++len])
-	//	printf("%s\n", map->map[len]);
-	//for (int i = 0; i < len; i++)
-	//{
-	//	printf("%s\n", map->map[i]);
-	//	free(map->map[i]);
-	//}
-	free(map->map);
+	free_twod_str(map->map);
 	free_t_tex(&map->tex);
-	//printf("map->tex-> -> %p\n", map->tex.no.direct);
-	//free(map->map);
 	map->map = NULL;
 }
 
 void	free_cube(t_pro *p)
 {
-	//free_t_map(p->map);
-	free_twod_str(p->map.map);
-	free_t_tex(&p->map.tex);
+	free_t_map(&p->map);
 }
