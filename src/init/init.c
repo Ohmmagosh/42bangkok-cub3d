@@ -6,11 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:39:07 by psuanpro          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/04 15:56:04 by psuanpro         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/03 22:13:13 by rchiewli         ###   ########.fr       */
->>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
+/*   Updated: 2023/04/04 19:17:02 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +16,6 @@ void	init_mlx_st(t_mlx *mlx)
 {
 	mlx->mlx = NULL;
 	mlx->win = NULL;
-	mlx->tline = malloc(sizeof(t_linearray) * 7);
 }
 
 

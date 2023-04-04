@@ -6,11 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/04 16:04:06 by psuanpro         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/03 23:40:21 by rchiewli         ###   ########.fr       */
->>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
+/*   Updated: 2023/04/04 19:15:29 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,57 +35,23 @@ typedef struct s_vec
 	int	z;
 } t_vec;
 
-<<<<<<< HEAD
-typedef struct s_xy
-{
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-
-} t_xy;
-
-typedef struct s_coord
-{
-	float x;
-	float y;
-=======
 typedef struct s_coord{
     float x;
     float y;
->>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
 }	t_coord;
 
 typedef struct s_line
 {
-<<<<<<< HEAD
-	t_coord p1;
-	t_coord p2;
-
-}	t_Line;
-
-typedef struct s_linearray
-{
-	int		linenum;
-	float	x2;
-	float	y2;
-=======
 	t_coord costart;
 	t_coord costop;
->>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
 	float	distance;
 }	t_line;
 
-typedef struct s_map
+typedef struct s_txd
 {
-	char	**map;
-}	t_map;
-
-typedef struct s_spt
-{
-	t_vec	axis;
-	int		di;
-} t_spt;
+	char	*direct;
+	char	*path;
+} t_txd;
 
 typedef struct s_col
 {
@@ -97,12 +59,6 @@ typedef struct s_col
 	int	g;
 	int	b;
 } t_col;
-
-typedef struct s_txd
-{
-	char	*direct;
-	char	*path;
-} t_txd;
 
 typedef struct s_tex
 {
@@ -113,6 +69,20 @@ typedef struct s_tex
 	t_txd	we;
 	t_txd	ea;
 } t_tex;
+
+typedef struct s_map
+{
+	char	**map;
+	t_tex	tex;
+}	t_map;
+
+typedef struct s_spt
+{
+	t_vec	axis;
+	int		di;
+} t_spt;
+
+
 
 typedef struct	s_hwa
 {

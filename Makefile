@@ -16,8 +16,8 @@ MAIN		= main.c
 MAIN_DIR	= ./
 
 CC			= gcc
-#CFLAGS		= -g -Wall -Werror -Wextra -Imlx
-CFLAGS		= -g -Wall -Werror -Wextra
+CFLAGS		= -g -Wall -Werror -Wextra -Imlx
+#CFLAGS		= -g -Wall -Werror -Wextra
 
 SRC_DIR		= ./src/
 
@@ -34,9 +34,6 @@ MODULE1		= input.c \
 				set_tex.c
 
 MODULE2		= process.c \
-				camera.c \
-				mapshow.c \
-				drawwall.c \
 				tdraw.c \
 				hooker.c
 
@@ -63,7 +60,7 @@ MLX = mlx/libmlx.a
 INCLUDE_MLX = -framework OpenGL -framework AppKit
 LIBFT = libft/libft.a
 LIB =	${addprefix $(LIB_DIR),$(LIBFT)} \
-		#${addprefix $(LIB_DIR),$(MLX)}
+		${addprefix $(LIB_DIR),$(MLX)}
 
 
 OBJ_DIR		= ./obj/
@@ -133,9 +130,9 @@ ${OBJ_DIR}%.o: ${MAIN_DIR}%.c
 
 ${NAME}: ${OBJS}
 	@make -C lib/libft
-	$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
-#@make -C lib/mlx
-#$(CC) $(OBJS) -o $(INCLUDE_MLX) $(NAME) $(LIB) $(CFLAGS)
+	@make -C lib/mlx
+	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
+#$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
 
 run:
 	./cub3d map/minimalist.cub
