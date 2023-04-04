@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 15:56:58 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:04:06 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ typedef struct s_xy
 
 } t_xy;
 
-typedef struct s_coord{
-    float x;
-    float y;
-} t_coord;
+typedef struct s_coord
+{
+	float x;
+	float y;
+}	t_coord;
 
 typedef struct s_line
 {
-	struct t_coord p1;
-	struct t_coord p2;
+	t_coord p1;
+	t_coord p2;
 
 }	t_Line;
 
