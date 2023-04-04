@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 20:09:20 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/04 01:30:15 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 500
 # define COLOR 0xFFFFFF
+# define BLOCK 100
 
 # include "color.h"
 # include <stdio.h>
@@ -30,8 +31,7 @@
 float	g_xstart;
 float	g_ystart;
 float	g_angle;
-int		g_gridsize;
-int		g_linecounter;
+void	*g_img;
 
 //init
 void	init_cube(t_pro *p);
@@ -49,14 +49,14 @@ char	**get_file_fd(const char *path);
 //process
 void	process_cube(t_pro *p);
 void	anglechange(int keycode, t_pro *p);
-void	draw_line(t_mlx *tmlx, t_xy *txy,float ang, int ladex);
+void	draw_line(float startx, float starty, t_coord stop, t_pro *p);
 void	movechange(int keycode, t_pro *p);
 void	showgrid(t_mlx *mlx);
 void	draw_wall(t_mlx *tmlx);
 void	ini_ray(t_pro *p);
-t_xy	get_point_on_circle2(float x, float y, float angle, int radiant);
-t_xy	draw_core(t_mlx *tmlx, float g_x, float g_y, float g_angle);
-void	draw_plane(t_mlx *tmlx, float g_x, float g_y, float g_angle);
+t_coord	get_point_on_circle(float x, float y, int radiant, float angle);
+void	draw_T(t_pro *p);
+int		hooker(int keycode, void *p);
 
 //free
 void	free_twod_str(char	**str);

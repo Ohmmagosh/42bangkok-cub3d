@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/28 18:38:23 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:40:21 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,17 @@ typedef struct s_vec
 	int	z;
 } t_vec;
 
-typedef struct s_xy
-{
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-
-} t_xy;
-
 typedef struct s_coord{
     float x;
     float y;
-} t_coord;
+}	t_coord;
 
 typedef struct s_line
 {
-	struct t_coord p1;
-	struct t_coord p2;
-
-}	t_Line;
-
-typedef struct s_linearray
-{
-	int		linenum;
-	float	x2;
-	float	y2;
+	t_coord costart;
+	t_coord costop;
 	float	distance;
-}	t_linearray;
+}	t_line;
 
 typedef struct s_map
 {
@@ -84,10 +67,8 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	t_xy		*txy;
 	t_myimg		img;
-	t_linearray	*larray;
-	t_hwa		hwa;
+	t_line		*tline;
 } t_mlx;
 
 typedef struct s_var
