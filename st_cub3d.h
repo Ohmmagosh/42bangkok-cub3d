@@ -6,7 +6,11 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/04 16:04:06 by psuanpro         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/03 23:40:21 by rchiewli         ###   ########.fr       */
+>>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +39,7 @@ typedef struct s_vec
 	int	z;
 } t_vec;
 
+<<<<<<< HEAD
 typedef struct s_xy
 {
 	float	x1;
@@ -48,10 +53,16 @@ typedef struct s_coord
 {
 	float x;
 	float y;
+=======
+typedef struct s_coord{
+    float x;
+    float y;
+>>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
 }	t_coord;
 
 typedef struct s_line
 {
+<<<<<<< HEAD
 	t_coord p1;
 	t_coord p2;
 
@@ -62,8 +73,12 @@ typedef struct s_linearray
 	int		linenum;
 	float	x2;
 	float	y2;
+=======
+	t_coord costart;
+	t_coord costop;
+>>>>>>> 8e8a66fa10d2e85c975242b576f8a6785a0568e5
 	float	distance;
-}	t_linearray;
+}	t_line;
 
 typedef struct s_map
 {
@@ -119,10 +134,8 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	t_xy		*txy;
 	t_myimg		img;
-	t_linearray	*larray;
-	t_hwa		hwa;
+	t_line		*tline;
 } t_mlx;
 
 typedef struct s_pro

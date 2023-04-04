@@ -6,161 +6,110 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 18:21:25 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/04 02:05:10 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <math.h>
 
-// # define WIN_WIDTH 500
-// # define WIN_HEIGHT 500
-// # define COLOR 0xFFFFFF
+// should know index x,y of start
+int	x = 3;
+int	y = 3;
 
-void get_point_on_circle(t_xy *txy, float angle)
+t_coord	get_point_on_circle(float x, float y, int radiant, float angle)
 {
-	angle = angle * M_PI / 180.0;
+	t_coord	tco;
+	float	ang;
 
-	txy->x2 = txy->x1 + 10 * cos(angle);
-	txy->y2 = txy->y1 + 10 * sin(angle);
+	ang = angle * M_PI / 180.0;
+
+	tco.x = x + radiant * cos(ang);
+	tco.y = y + radiant * sin(ang);
+	return (tco);
 }
 
-void	draw_line(t_mlx *tmlx, t_xy *txy,float ang, int ladex)
+void	draw_line(float startx, float starty, t_coord stop, t_pro *p)
 {
-	float	dx;
-	float	dy;
-	float	sx;
-	float	sy;
-	float	err;
-	float	distance;
-	int		i;
+	float	dx = fabsf(stop.x - startx);
+	float	dy = fabsf(stop.y - starty);
+	float	sx, sy, err;
+	int		x;
+	int		y;
 
-	showgrid(tmlx);
-	get_point_on_circle(txy, ang);
-	dx = fabsf(txy->x2 - txy->x1);
-	dy = fabsf(txy->y2 - txy->y1);
-	if (txy->x1 < txy->x2)
+	stop.x = (int)stop.x;
+	stop.y = (int)stop.y;
+	printf("x-y =  %f %f stop x-y %f %f\n", startx, starty, stop.x, stop.y);
+	if (startx < stop.x)
 		sx = 1;
 	else
 		sx = -1;
-	if (txy->y1 < txy->y2)
+	if (starty < stop.y)
 		sy = 1;
 	else
 		sy = -1;
 	err = dx - dy;
-	txy->x1 += g_xstart;
-	txy->y1 += g_ystart;
-	while (txy->x1 != 0 && txy->x1 != (WIN_WIDTH / 2) && txy->y1 != 0 && txy->y1 != WIN_HEIGHT && txy->x1 >= (g_gridsize * 2) && txy->y1 >= (g_gridsize * 3))
+	x = startx;
+	y = starty;
+	while (1)
 	{
-		// if (txy->x1 >= (g_gridsize * 2) || txy->y1 >= (g_gridsize * 3))
-		// {
-		// 	printf("distance of line %d ---> %f\n", g_linecounter, distance);
-		// }
-		mlx_pixel_put(tmlx->mlx, tmlx->win, txy->x1, txy->y1, COLOR);
-		if (ladex != -1)
-		{
-			// printf("%d\n", ladex);
-			tmlx->larray[ladex].x2 = txy->x1;
-			tmlx->larray[ladex].y2 = txy->y1;
-		// 	printf("larray[%d]. x2 = %f . y2 = %f\n", ladex, tmlx->larray[ladex].x2, tmlx->larray[ladex].y2);
-		}
-		if (err * 2 > -dy)
+		printf("%d %d, stop x y %f %f\n", x, y, stop.x, stop.y);
+		// exit(0);
+		mlx_pixel_put(p->mlx.mlx, p->mlx.win, x, y, COLOR);
+		if (x == stop.x && y == stop.y || x < 0)
+			break;
+		int e2 = err * 2;
+		if (e2 > -dy)
 		{
 			err -= dy;
-			txy->x1 += sx;
+			x += sx;
 		}
-		if (err * 2 < dx)
+		if (e2 < dx)
 		{
 			err += dx;
-			txy->y1 += sy;
+			y += sy;
 		}
 	}
-	// if (txy->x1 == 0 || txy->x1 == WIN_WIDTH || txy->y1 == 0 || txy->y1 == WIN_HEIGHT || txy->x1 < (g_gridsize * 2) || txy->y1 < (g_gridsize * 3))
-	// {
-		if (ladex >= 0)
-		{
-			tmlx->larray[ladex].distance = sqrt(pow((g_xstart - tmlx->larray[ladex].x2), 2) + pow((g_ystart - tmlx->larray[ladex].y2), 2));
-			printf("line array [%d] x = %f y = %f distance %f\n", ladex, tmlx->larray[ladex].x2, tmlx->larray[ladex].y2, tmlx->larray[ladex].distance);
-		}
-	// }
-	txy->x1 = 1;
-	txy->y1 = 1;
 }
 
-int rotate_hook(int keycode, t_pro *p)
+void	ini_start(char c, int x, int y)
 {
-	if (keycode == 124 || keycode == 123)
-		anglechange(keycode, p);
-	else if (keycode == 0 || keycode == 2 || keycode == 1 || keycode == 13)
-		movechange(keycode, p);
-	else
-		printf("keykode = %d\n", keycode);
-	return 0;
-}
-
-void	xy_become_start(t_xy *txy, int xstart, int ystart)
-{
-	txy->x1 = 1;
-	txy->y1 = 1;
-}
-
-void	circle(t_pro *p, t_xy *txy)
-{
-	float	r;
-	float	x;
-	float	y;
-
-	r = 5;
-	x = txy->x1 - r;
-	while (r > 0)
-	{
-		while (x <= txy->x1 + r)
-		{
-			y = txy->y1 + sqrt(r * r - (x - txy->x1) * (x - txy->x1));
-			mlx_pixel_put(p->mlx.mlx, p->mlx.win, x, y, COLOR);
-			y = txy->y1 - sqrt(r * r - (x - txy->x1) * (x - txy->x1));
-			mlx_pixel_put(p->mlx.mlx, p->mlx.win, x, y, COLOR);
-			x += 0.01;
-		}
-		x = txy->x1 - r;
-		r -= 2;
-	}
+	if (c == 'N')
+		g_angle = 270;
+	else if (c == 'E')
+		g_angle = 0;
+	else if (c == 'S')
+		g_angle = 90;
+	else if (c == 'W')
+		g_angle = 180;
+	g_xstart = (BLOCK * x) + (BLOCK / 2) - 1;
+	g_ystart = (BLOCK * y) + (BLOCK / 2) - 1;
 }
 
 void	process_cube(t_pro *p)
 {
-	t_xy	*txy;
-	t_hwa	*hwa;
-	// int		i;
+	char *map[] = {
+		"11111",
+		"10001",
+		"10101",
+		"100N1",
+		"11111",
+		NULL
+	};
+	for (int i = 0; map[i]; i++)
+		printf("%s\n", map[i]);
 
-	// i = 0;
-	hwa = malloc(sizeof(t_hwa));
-	txy = malloc(sizeof(t_xy));
-	p->mlx.txy = txy;
-	txy->x2 = 0;
-	txy->x2 = 0;
-	hwa->angle = 270;
+	ini_start(map[3][3], x, y);
+	// printf("%f %f %f\n", g_xstart, g_ystart, g_angle);
 
 	p->mlx.mlx = mlx_init();
 	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH,  WIN_HEIGHT, "My Window");
-	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	p->mlx.img.addr = mlx_get_data_addr(&p->mlx.img.img, &p->mlx.img.bits_per_pixel, \
-		&p->mlx.img.line_length, &p->mlx.img.endian);
-
-	// while (i < 7)
-	// {
-	// 	printf ("bfore i\n");
-	// 	p->mlx.larray[i].linenum = i;
-	// 	printf ("aftr i\n");
-	// }
-
-	xy_become_start(txy, hwa->xstart, hwa->ystart);
-	// circle(p,txy);
-	ini_ray(p);
-	// draw_line(&p->mlx, txy, hwa->angle, -1);
-	// draw_plane(&p->mlx, g_xstart, g_ystart, g_angle);
-	xy_become_start(txy, hwa->xstart, hwa->ystart);
-	mlx_hook(p->mlx.win, 2, 0, rotate_hook, p);
-	xy_become_start(txy, hwa->xstart, hwa->ystart);
+	int mwidth = 500;
+    int mheight = 500;
+	g_img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/aaa.xpm", &mwidth, &mheight);
+	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, g_img, 0, 0);
+	draw_T(p);
+	mlx_hook(p->mlx.win, 2, 0, hooker, p);
 	mlx_loop(p->mlx.mlx);
+	// exit(0);
 }

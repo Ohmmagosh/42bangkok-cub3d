@@ -36,7 +36,9 @@ MODULE1		= input.c \
 MODULE2		= process.c \
 				camera.c \
 				mapshow.c \
-				drawwall.c
+				drawwall.c \
+				tdraw.c \
+				hooker.c
 
 MODULE3		= free.c
 
