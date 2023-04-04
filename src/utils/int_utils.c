@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   int_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 22:02:36 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 22:47:28 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/18 03:17:52 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/18 03:18:11 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include"../../cub3d.h"
 
-void	print_twod_str(const char **str)
+int	is_inarray(const int *array, int nbr, size_t size)
 {
-	char	**tmp;
-	int		i;
+	int	i;
 
 	i = 0;
-	tmp = (char **)str;
-	while(tmp[i])
+	while (i < size)
 	{
-		ft_printf("tmp[%d] -> %s\n", i, tmp[i]);
+		if (array[i] == nbr)
+			return (1);
 		i++;
 	}
-	return ;
+	return (0);
 }

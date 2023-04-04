@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:38:55 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 01:53:40 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:19:12 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ t_txd	init_t_txd_v(char *direct, char *path)
 	tdtail.direct = ft_strdup(direct);
 	tdtail.path = ft_strdup(path);
 	return (tdtail);
+}
+
+int	*init_array_int(int size)
+{
+	int	*ret;
+
+	ret = 0;
+	ret = (int *)malloc(sizeof(int) * size);
+	if (!ret)
+		return (0);
+	return (ret);
 }

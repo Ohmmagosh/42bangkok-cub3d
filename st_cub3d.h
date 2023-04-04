@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 23:44:15 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:43:02 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,22 @@ enum texture_direction {
 	C,
 };
 
+typedef struct s_vei
+{
+	int	x;
+	int	y;
+} t_vei;
+
 typedef struct s_vec
 {
 	float	x;
 	float	y;
-	float	z;
 } t_vec;
 
 typedef struct s_spt
 {
 	t_vec	axis;
+	int		di;
 } t_spt;
 
 typedef struct s_col
@@ -68,13 +74,6 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 } t_mlx;
-
-typedef struct s_var
-{
-	char	*file;
-
-
-} t_var;
 
 typedef struct s_pro
 {

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 23:45:53 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/16 23:11:00 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:35:45 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int	texture_access(const char **file)
 		if (!open_file(texture[i].path))
 			err++ ;
 		i++ ;
+	}
+	for (int j = 0; j < 4; j++)
+	{
+		free(texture[j].direct);
+		free(texture[j].path);
 	}
 	if (err)
 		return (1);
@@ -101,6 +106,8 @@ void	valid_texture(const char *path)
 	if (valid_color((const char **)file))
 		err_len++ ;
 	free_twod_str(file);
+	//free(file);
+	file = NULL;
 	if (err_len != 0)
 		print_msg_err("texture incorrect");
 	return ;

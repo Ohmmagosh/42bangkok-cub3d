@@ -1,57 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_texture_utils1.c                             :+:      :+:    :+:   */
+/*   set_tex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 21:46:15 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 01:24:08 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/03/20 23:54:17 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/03/21 18:35:08 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-t_col	get_color_t_col(const char *color)
+t_tex	set_tex(const char **file)
 {
-	char	*tmp;
-	char	**rgb;
-	t_col	col;
-
-	tmp = (char *)color;
-	rgb = ft_split(tmp, ',');
-	col.r = ft_atoi(rgb[0]);
-	col.g = ft_atoi(rgb[1]);
-	col.b = ft_atoi(rgb[2]);
-	free_twod_str(rgb);
-	//free(rgb);
-	rgb = NULL;
-	return (col);
-}
-
-
-int	valid_color(const char **file)
-{
-	int		err;
-	t_col	floor;
-	t_col	ceil;
+	t_tex	ret;
 	char	***texture;
 
-	err = 0;
 	texture = (char ***)malloc(sizeof(char **) * (3));
-	if (!texture)
-		return (1);
 	texture[0] = get_texture_2d("F ", file);
 	texture[1] = get_texture_2d("C ", file);
 	texture[2] = NULL;
-	floor = get_color_t_col(texture[0][1]);
-	ceil = get_color_t_col(texture[1][1]);
+	ret.floor = get_color_t_col(texture[0][1]);
+	ret.ceil = get_color_t_col(texture[1][1]);
+	ret.ea = get_texture("EA ", file);
+	ret.no = get_texture("NO ", file);
+	ret.so = get_texture("SO ", file);
+	ret.we = get_texture("WE ", file);
 	free_threed_str(texture);
 	texture = NULL;
-	if (valid_color_num(floor) || valid_color_num(ceil))
-		err++ ;
-	if (err)
-		return (1);
-	return (0);
+	return (ret);
 }
-

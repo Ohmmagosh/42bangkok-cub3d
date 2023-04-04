@@ -16,7 +16,8 @@ MAIN		= main.c
 MAIN_DIR	= ./
 
 CC			= gcc
-CFLAGS		= -g -Wall -Werror -Wextra -Imlx
+#CFLAGS		= -g -Wall -Werror -Wextra -Imlx
+CFLAGS		= -g -Wall -Werror -Wextra
 
 SRC_DIR		= ./src/
 
@@ -27,7 +28,10 @@ MODULE1		= input.c \
 				valid_map.c \
 				valid_map_utils.c \
 				valid_path.c \
-				valid_file.c
+				valid_file.c \
+				set_map.c \
+				set_map_utils.c \
+				set_tex.c
 
 MODULE2		= process.c
 
@@ -39,7 +43,8 @@ MODULE4		= init.c \
 MODULE5		= print_msg_utils.c \
 				print_str.c \
 				file_utils.c \
-				str_utils.c
+				str_utils.c \
+				int_utils.c
 
 
 MODULE1_DIR	= ./src/input/
@@ -53,7 +58,7 @@ MLX = mlx/libmlx.a
 INCLUDE_MLX = -framework OpenGL -framework AppKit
 LIBFT = libft/libft.a
 LIB =	${addprefix $(LIB_DIR),$(LIBFT)} \
-		${addprefix $(LIB_DIR),$(MLX)}
+		#${addprefix $(LIB_DIR),$(MLX)}
 
 
 OBJ_DIR		= ./obj/
@@ -91,25 +96,25 @@ CUBE =  echo '$(BLU)________$(RES)/\\\\\\\\\\\\\\\\\\$(BLU)________________$(RES
 
 #input
 ${OBJ_DIR}%.o: ${MODULE1_DIR}%.c
-	$(CC) -c -o $@ $^
+	$(CC) -g -c -o $@ $^
 
 #process
 ${OBJ_DIR}%.o: ${MODULE2_DIR}%.c
-	$(CC) -c -o $@ $^
+	$(CC) -g -c -o $@ $^
 
 #free
 ${OBJ_DIR}%.o: ${MODULE3_DIR}%.c
-	$(CC) -c -o $@ $^
+	$(CC) -g -c -o $@ $^
 
 #init
 ${OBJ_DIR}%.o: ${MODULE4_DIR}%.c
-	$(CC) -c -o $@ $^
+	$(CC) -g -c -o $@ $^
 
 ${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
-	$(CC) -c -o $@ $^
+	$(CC) -g -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
-	#@$(LOAD)
+#@$(LOAD)
 	@sleep 0.5
 	@$(CUBE)
 
@@ -123,15 +128,19 @@ ${OBJ_DIR}%.o: ${MAIN_DIR}%.c
 
 ${NAME}: ${OBJS}
 	@make -C lib/libft
-	@make -C lib/mlx
-	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
+	$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
+#@make -C lib/mlx
+#$(CC) $(OBJS) -o $(INCLUDE_MLX) $(NAME) $(LIB) $(CFLAGS)
 
+run:
+	./cub3d map/minimalist.cub
 
 clean:
 	@make -C lib/libft clean
 	@make -C lib/mlx clean
 	@echo "$(BYEL)Mlx Clean....$(RES)"
 	@$(RM) $(OBJ_DIR)
+	@$(RM) *.dSYM
 	@$(CLEAN)
 
 fclean: clean
