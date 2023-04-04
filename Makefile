@@ -33,7 +33,10 @@ MODULE1		= input.c \
 				set_map_utils.c \
 				set_tex.c
 
-MODULE2		= process.c
+MODULE2		= process.c \
+				camera.c \
+				mapshow.c \
+				drawwall.c
 
 MODULE3		= free.c
 

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 11:43:02 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:56:58 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,44 @@ typedef struct s_vei
 
 typedef struct s_vec
 {
-	float	x;
-	float	y;
+	int	x;
+	int	y;
+	int	z;
 } t_vec;
+
+typedef struct s_xy
+{
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+
+} t_xy;
+
+typedef struct s_coord{
+    float x;
+    float y;
+} t_coord;
+
+typedef struct s_line
+{
+	struct t_coord p1;
+	struct t_coord p2;
+
+}	t_Line;
+
+typedef struct s_linearray
+{
+	int		linenum;
+	float	x2;
+	float	y2;
+	float	distance;
+}	t_linearray;
+
+typedef struct s_map
+{
+	char	**map;
+}	t_map;
 
 typedef struct s_spt
 {
@@ -63,16 +98,30 @@ typedef struct s_tex
 	t_txd	ea;
 } t_tex;
 
-typedef struct s_map
+typedef struct	s_hwa
 {
-	t_tex	tex;
-	char	**map;
-} t_map;
+	float	xstart;
+	float	ystart;
+	float	angle;
+} t_hwa;
+
+typedef struct	s_myimg
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_myimg;
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
+	void		*mlx;
+	void		*win;
+	t_xy		*txy;
+	t_myimg		img;
+	t_linearray	*larray;
+	t_hwa		hwa;
 } t_mlx;
 
 typedef struct s_pro
