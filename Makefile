@@ -134,7 +134,7 @@ ${NAME}: ${OBJS}
 	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
 #$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
 
-run:
+run: re
 	./cub3d map/minimalist.cub
 
 clean:

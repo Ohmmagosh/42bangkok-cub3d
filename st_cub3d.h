@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 19:15:29 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/07 01:28:39 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,6 @@ typedef struct s_spt
 	t_vec	axis;
 	int		di;
 } t_spt;
-
-
-
-typedef struct	s_hwa
-{
-	float	xstart;
-	float	ystart;
-	float	angle;
-} t_hwa;
 
 typedef struct	s_myimg
 {
