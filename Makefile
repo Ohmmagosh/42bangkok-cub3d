@@ -31,11 +31,11 @@ MODULE1		= input.c \
 				valid_file.c \
 				set_map.c \
 				set_map_utils.c \
-				set_tex.c
+				set_tex.c \
+				set_spt.c
 
 MODULE2		= process.c \
-				tdraw.c \
-				hooker.c
+				minimap.c
 
 MODULE3		= free.c
 
@@ -134,7 +134,7 @@ ${NAME}: ${OBJS}
 	$(CC) $(OBJS) $(INCLUDE_MLX) -o $(NAME) $(LIB) $(CFLAGS)
 #$(CC) $(OBJS) -o $(NAME) $(LIB) $(CFLAGS)
 
-run:
+run: re
 	./cub3d map/minimalist.cub
 
 clean:

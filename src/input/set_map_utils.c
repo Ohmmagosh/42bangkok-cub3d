@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_map_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 23:52:09 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/20 23:53:51 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:42:35 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ int	is_empty_line(const char *line)
 		return (1);
 	return (0);
 }
+

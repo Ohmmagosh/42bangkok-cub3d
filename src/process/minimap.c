@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 18:39:07 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/19 15:10:51 by psuanpro         ###   ########.fr       */
+/*   Created: 2023/04/17 19:58:20 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/04/20 22:33:07 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	init_mlx_st(t_mlx *mlx)
+char	**init_minimap(void)
 {
-	mlx->mlx = NULL;
-	mlx->win = NULL;
+	char	**ret;
+	int		i;
+
+	i = 0;
+	ret = (char **)malloc(sizeof(char *) * 10);
+	if (!ret)
+		return (NULL);
+	while (i < 10)
+	{
+		ret[i] = NULL;
+		i++;
+	}
+	return (ret);
+}
+
+void	draw_minimap(t_pro *p)
+{
+	char	**minimap;
+	int		i;
+
+	i = 0;
+	minimap = init_minimap();
+
+
+	// for (int i = 0; p->map.map[i]; i++)
+	// 	printf("p->map.map[i] -> %s\n", p->map.map[i]);
+	return;
 }
 
 
-void	init_map_st(t_map *map)
-{
-	map->map = NULL;
-	map->tex = init_t_tex();
-}
-
-void	init_pro(t_pro *p)
-{
-	init_mlx_st(&p->mlx);
-	init_map_st(&p->map);
-}
-
-void	init_cube(t_pro *p)
-{
-	init_pro(p);
-	return ;
-}

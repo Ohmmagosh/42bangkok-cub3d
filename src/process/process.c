@@ -3,113 +3,152 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 19:03:50 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:21:53 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <math.h>
 
-// should know index x,y of start
-int	x = 3;
-int	y = 3;
-
-t_coord	get_point_on_circle(float x, float y, int radiant, float angle)
+void swap_t_vec(t_vec *a, t_vec *b)
 {
-	t_coord	tco;
-	float	ang;
+	t_vec *tmp;
 
-	ang = angle * M_PI / 180.0;
-
-	tco.x = x + radiant * cos(ang);
-	tco.y = y + radiant * sin(ang);
-	return (tco);
+	tmp->x = a->x;
+	tmp->y = a->y;
+	a->x = b->x;
+	a->x = b->y;
+	b->x = tmp->x;
+	b->y = tmp->y;
 }
 
-void	draw_line(float startx, float starty, t_coord stop, t_pro *p)
-{
-	float	dx = fabsf(stop.x - startx);
-	float	dy = fabsf(stop.y - starty);
-	float	sx, sy, err;
-	int		x;
-	int		y;
 
-	stop.x = (int)stop.x;
-	stop.y = (int)stop.y;
-	printf("x-y =  %f %f stop x-y %f %f\n", startx, starty, stop.x, stop.y);
-	if (startx < stop.x)
-		sx = 1;
-	else
-		sx = -1;
-	if (starty < stop.y)
-		sy = 1;
-	else
-		sy = -1;
-	err = dx - dy;
-	x = startx;
-	y = starty;
-	while (1)
+// void	minimap(t_mlx2 *p)
+// {
+// 	void	*wall;
+// 	void	*bg;
+// 	M_PI
+// }
+
+void draw_line1(void *mlx_ptr, void *win_ptr, int x1, int y1, int x2, int y2, int color)
+{
+	int dx, dy, x, y, err, x_step, y_step;
+
+	dx = abs(x2 - x1);
+	dy = abs(y2 - y1);
+	x = x1;
+	y = y1;
+	x_step = (x1 < x2) ? 1 : -1;
+	y_step = (y1 < y2) ? 1 : -1;
+	err = (dx > dy ? dx : -dy) / 2;
+
+	while (x != x2 || y != y2)
 	{
-		printf("%d %d, stop x y %f %f\n", x, y, stop.x, stop.y);
-		// exit(0);
-		mlx_pixel_put(p->mlx.mlx, p->mlx.win, x, y, COLOR);
-		if (x == stop.x && y == stop.y || x < 0)
-			break;
-		int e2 = err * 2;
-		if (e2 > -dy)
+		mlx_pixel_put(mlx_ptr, win_ptr, x, y, color);
+		int e2 = err;
+		if (e2 > -dx)
 		{
 			err -= dy;
-			x += sx;
+			x += x_step;
 		}
-		if (e2 < dx)
+		if (e2 < dy)
 		{
 			err += dx;
-			y += sy;
+			y += y_step;
 		}
 	}
 }
 
-void	ini_start(char c, int x, int y)
+
+void draw_line_by_angle(void *mlx_ptr, void *win_ptr, int x1, int y1, int length, double angle, int color)
 {
-	if (c == 'N')
-		g_angle = 270;
-	else if (c == 'E')
-		g_angle = 0;
-	else if (c == 'S')
-		g_angle = 90;
-	else if (c == 'W')
-		g_angle = 180;
-	g_xstart = (BLOCK * x) + (BLOCK / 2) - 1;
-	g_ystart = (BLOCK * y) + (BLOCK / 2) - 1;
+	int x2, y2;
+
+	x2 = x1 + length * cos(angle);
+	y2 = y1 + length * sin(angle);
+
+	mlx_pixel_put(mlx_ptr, win_ptr, x1, y1, color);
+	draw_line1(mlx_ptr, win_ptr, x1, y1, x2, y2, color);
 }
 
-void	process_cube(t_pro *p)
+// void draw_radar(t_mlx2 *p, int length, t_vei start)
+// {
+// 	double	angle_deg;
+// 	double	angle_rad;
+
+// 	while (angle_deg <= 66)
+// 	{
+// 		angle_rad = angle_deg * (M_PI / 180.0);
+// 		draw_line_by_angle(p->mlx, p->win, start.x, start.y, length, angle_rad, 0xFFFFFF);
+// 		angle_deg += 2;
+// 	}
+// }
+
+// void minimap_put_block(t_mlx2 *p, int x, int y, void *img, int width, int heigth)
+// {
+// 	int block_x;
+// 	int block_y;
+
+// 	block_y = 0;
+// 	while (block_y < 3)
+// 	{
+// 		block_x = 0;
+// 		while (block_x < 3)
+// 		{
+// 			mlx_put_image_to_window(p->mlx, p->win, img, x, y);
+// 			block_x++;
+// 		}
+// 	}
+// }
+
+// void draw_minimap(t_mlx2 *p, char **map)
+// {
+// 	int width;
+// 	int height;
+// 	int x;
+// 	int y;
+// 	void *img;
+
+// 	img = mlx_xpm_file_to_image(p->mlx, "./src/process/wall2.xpm", &width, &height);
+// 	y = 0;
+// 	while (map[y])
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
+
+void process_cube(t_pro *p)
 {
-	char *map[] = {
-		"11111",
-		"10001",
-		"10101",
-		"100N1",
-		"11111",
-		NULL
-	};
-	for (int i = 0; map[i]; i++)
-		printf("%s\n", map[i]);
-
-	ini_start(map[3][3], x, y);
-	// printf("%f %f %f\n", g_xstart, g_ystart, g_angle);
-
+	// t_vec	start;
+	// t_vec	end;
+	// void	*img;
 	p->mlx.mlx = mlx_init();
-	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH,  WIN_HEIGHT, "My Window");
-	int mwidth = 500;
-    int mheight = 500;
-	g_img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/aaa.xpm", &mwidth, &mheight);
-	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, g_img, 0, 0);
-	draw_T(p);
-	mlx_hook(p->mlx.win, 2, 0, hooker, p);
+	p->mlx.win = mlx_new_window(p->mlx.mlx, 1290, 960, "cub3d");
+
+	draw_minimap(p);
+	// mlx_loop(p.mlx);
+	// void *mlx_ptr;
+	// void *win_ptr;
+	// int x1 = 400, y1 = 300, length = 300;
+	// double angle_deg, angle_rad;
+	// draw_radar(p, 300, start);
+	// mlx_ptr = mlx_init();
+	// win_ptr = mlx_new_window(mlx_ptr, 1290, 960, "Lines by Angle");
+
+	// while (angle_deg <= 66)
+	// {
+	// 	angle_rad = angle_deg * (M_PI / 180.0);
+	// 	draw_line_by_angle(p.mlx, p.win, x1, y1, length, angle_rad, 0xFFFFFF);
+	// 	angle_deg += 2;
+	// }
 	mlx_loop(p->mlx.mlx);
-	// exit(0);
 }
