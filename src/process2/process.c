@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/05 23:26:10 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:08:12 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ t_coord	get_point_on_circle(float x, float y, int radiant, float angle)
 	return (tco);
 }
 
-void	draw_line1(t_mlx *tmlx, t_line *tline,float ang, int ladex)
+void	draw_line(t_mlx *tmlx, t_line *tline,float ang, int ladex)
 {
 	t_coord	d;
 	t_coord	s;
@@ -178,4 +178,5 @@ void	process_cube(t_pro *p)
 	// xy_become_start(txy, hwa->xstart, hwa->ystart);
 	// exit(0);
 	mlx_loop(p->mlx.mlx);
+	printf("KUY!!\n");
 }

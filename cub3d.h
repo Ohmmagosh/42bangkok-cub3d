@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 19:21:33 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:09:52 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,11 @@ int		len_empty_line(const char **map);
 int		is_empty_line(const char *line);
 t_col	get_color_t_col(const char *color);
 t_tex	set_tex(const char **file);
+t_spt	set_spt(char **map);
 //process
 void	process_cube(t_pro *p);
-void	anglechange(int keycode, t_pro *p);
-void	draw_line(float startx, float starty, t_coord stop, t_pro *p);
-void	movechange(int keycode, t_pro *p);
-void	showgrid(t_mlx *mlx);
-void	draw_wall(t_mlx *tmlx);
-void	ini_ray(t_pro *p);
-t_coord	get_point_on_circle(float x, float y, int radiant, float angle);
-void	draw_T(t_pro *p);
-int		hooker(int keycode, void *p);
+void	draw_minimap(t_pro *p);
+
 
 //free
 void	free_twod_str(char	**str);
