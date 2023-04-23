@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/20 22:29:19 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/23 01:30:40 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_vec
 } t_vec;
 
 typedef struct s_coord{
-    float x;
-    float y;
+	float x;
+	float y;
 }	t_coord;
 
 typedef struct s_line
@@ -70,9 +70,25 @@ typedef struct s_tex
 	t_txd	ea;
 } t_tex;
 
+typedef struct s_img
+{
+	void	*img;
+	int		width;
+	int		height;
+}	t_img;
+
+typedef struct s_minimap
+{
+	t_img	wall;
+	t_img	floor;
+	t_img	player;
+}	t_mini;
+
 typedef struct s_map
 {
 	char	**map;
+	char	**minimap;
+	t_mini	img;
 	t_tex	tex;
 }	t_map;
 

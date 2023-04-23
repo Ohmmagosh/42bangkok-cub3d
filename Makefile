@@ -35,7 +35,8 @@ MODULE1		= input.c \
 				set_spt.c
 
 MODULE2		= process.c \
-				minimap.c
+				minimap.c \
+				key_hook.c
 
 MODULE3		= free.c
 

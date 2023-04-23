@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/19 14:21:53 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/23 23:23:41 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,52 +103,30 @@ void draw_line_by_angle(void *mlx_ptr, void *win_ptr, int x1, int y1, int length
 // 		}
 // 	}
 // }
+void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color)
+{
+	char	*dst;
 
-// void draw_minimap(t_mlx2 *p, char **map)
-// {
-// 	int width;
-// 	int height;
-// 	int x;
-// 	int y;
-// 	void *img;
-
-// 	img = mlx_xpm_file_to_image(p->mlx, "./src/process/wall2.xpm", &width, &height);
-// 	y = 0;
-// 	while (map[y])
-// 	{
-// 		x = 0;
-// 		while (map[y][x])
-// 		{
-
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 void process_cube(t_pro *p)
 {
-	// t_vec	start;
-	// t_vec	end;
-	// void	*img;
 	p->mlx.mlx = mlx_init();
-	p->mlx.win = mlx_new_window(p->mlx.mlx, 1290, 960, "cub3d");
+	p->mlx.win = mlx_new_window(p->mlx.mlx, 800, 600, "cub3d");
 
+	t_myimg img;
+	img.img = mlx_new_image(p->mlx.mlx, 800, 600);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	for (int y = 0; y < 300; y++)
+	{
+		for (int x = 0; x < 800; x++)
+			my_mlx_pixel_put(&img, x, y, 0xFC0000);
+	}
+	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, img.img, 0, 0);
 	draw_minimap(p);
-	// mlx_loop(p.mlx);
-	// void *mlx_ptr;
-	// void *win_ptr;
-	// int x1 = 400, y1 = 300, length = 300;
-	// double angle_deg, angle_rad;
-	// draw_radar(p, 300, start);
-	// mlx_ptr = mlx_init();
-	// win_ptr = mlx_new_window(mlx_ptr, 1290, 960, "Lines by Angle");
-
-	// while (angle_deg <= 66)
-	// {
-	// 	angle_rad = angle_deg * (M_PI / 180.0);
-	// 	draw_line_by_angle(p.mlx, p.win, x1, y1, length, angle_rad, 0xFFFFFF);
-	// 	angle_deg += 2;
-	// }
+	key_hook(p);
 	mlx_loop(p->mlx.mlx);
 }

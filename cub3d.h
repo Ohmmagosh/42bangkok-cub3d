@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/19 15:42:29 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:58:38 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 # include <fcntl.h>
 # include "./st_cub3d.h"
 
-float	g_xstart;
-float	g_ystart;
-float	g_angle;
-void	*g_img;
+// float	g_xstart;
+// float	g_ystart;
+// float	g_angle;
+// void	*g_img;
 
 //init
 void	init_cube(t_pro *p);
@@ -69,9 +69,12 @@ int		is_empty_line(const char *line);
 t_col	get_color_t_col(const char *color);
 t_tex	set_tex(const char **file);
 t_spt	set_spt(char **map);
+t_vei	get_pos_spt(char **map, int mode);
+int		findxy_minimap(char **map, int mode);
 //process
 void	process_cube(t_pro *p);
 void	draw_minimap(t_pro *p);
+void	key_hook(t_pro *p);
 
 
 //free
