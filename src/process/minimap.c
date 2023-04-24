@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:58:20 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/23 23:11:26 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:10:13 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ t_mini	init_minimap_img(t_pro *p)
 {
 	t_mini	mini;
 
-	mini.wall = init_img(p->mlx.mlx, "./src/process/wall15px.xpm");
-	mini.floor = init_img(p->mlx.mlx, "./src/process/floor15px.xpm");
+	mini.wall = init_img(p->mlx.mlx, "./src/process/floor15px.xpm");
+	mini.floor = init_img(p->mlx.mlx, "./src/process/wall15px.xpm");
 	mini.player = init_img(p->mlx.mlx, "./src/process/player15px.xpm");
 	return (mini);
 }
