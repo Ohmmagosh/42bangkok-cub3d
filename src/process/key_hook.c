@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:26:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 23:58:27 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/25 01:18:57 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,33 @@ int	hook(int key, t_pro *p)
 	if (key == 13)
 	{
 		player_move(player, p->map.map, 0);
-		p->spt.pos.y -= 1;
+		p->tline.pos.y -= 0.1;
 	}
 	else if (key == 0)
 	{
 		player_move(player, p->map.map, 1);
-		p->spt.pos.x -= 1;
+		p->tline.pos.x -= 0.1;
 	}
 	else if (key == 2)
 	{
 		player_move(player, p->map.map, 2);
-		p->spt.pos.x += 1;
+		p->tline.pos.x += 0.1;
 	}
 	else if (key == 1)
 	{
 		player_move(player, p->map.map, 3);
-		p->spt.pos.y += 1;
+		p->tline.pos.y += 0.1;
 	}
 	lode_start(p);
 	draw_minimap(p);
+	// mlx_destroy_image(p->mlx.mlx, p->mlx.win);
 	return (0);
 }
 
 void	key_hook(t_pro *p)
 {
-	mlx_key_hook(p->mlx.win, hook, p);
+	// mlx_key_hook(p->mlx.win, hook, p);
+	mlx_hook(p->mlx.win, 2, 1L<<0, hook, p);
 	return ;
 }
 

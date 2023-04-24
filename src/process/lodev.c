@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:45:56 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/04/25 00:50:53 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/25 01:09:43 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,21 @@ void	lode_start(t_pro *p)
 	t_vef	plane;
 	int		i;
 
-	p->tline.pos = (t_vef){p->spt.pos.x + 0.5, p->spt.pos.y + 0.5};
+	// p->tline.pos = (t_vef){p->spt.pos.x + 0.5, p->spt.pos.y + 0.5};
 	plane = set_plane(p->spt.cstart);
 	i = 0;
-	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
+	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
+	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
+
+	p->mlx.img.img = mlx_new_image(p->mlx.mlx, 800, 600);
+	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length,
+								&p->mlx.img.endian);
+	for (int y = 0; y < 300; y++)
+	{
+		for (int x = 0; x < 800; x++)
+			my_mlx_pixel_put(&p->mlx.img, x, y, 0xFC0000);
+	}
+
 	while (i < WIN_WIDTH)
 	{
 		p->tline.cameraX = 2 * i / (float)WIN_WIDTH - 1;
