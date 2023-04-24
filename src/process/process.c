@@ -6,15 +6,12 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 19:04:08 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:20:14 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <math.h>
-
-
-
 
 void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color)
 {
@@ -24,51 +21,22 @@ void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// void draw_radar(t_mlx2 *p, int length, t_vei start)
-// {
-// 	double	angle_deg;
-// 	double	angle_rad;
-
-// 	while (angle_deg <= 66)
-// 	{
-// 		angle_rad = angle_deg * (M_PI / 180.0);
-// 		draw_line_by_angle(p->mlx, p->win, start.x, start.y, length, angle_rad, 0xFFFFFF);
-// 		angle_deg += 2;
-// 	}
-// }
-
-// void minimap_put_block(t_mlx2 *p, int x, int y, void *img, int width, int heigth)
-// {
-// 	int block_x;
-// 	int block_y;
-
-// 	block_y = 0;
-// 	while (block_y < 3)
-// 	{
-// 		block_x = 0;
-// 		while (block_x < 3)
-// 		{
-// 			mlx_put_image_to_window(p->mlx, p->win, img, x, y);
-// 			block_x++;
-// 		}
-// 	}
-// }
-
 void process_cube(t_pro *p)
 {
 	p->mlx.mlx = mlx_init();
 	p->mlx.win = mlx_new_window(p->mlx.mlx, 800, 600, "cub3d");
 
-	// t_myimg img;
-	// img.img = mlx_new_image(p->mlx.mlx, 800, 600);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
-	// for (int y = 0; y < 300; y++)
-	// {
-	// 	for (int x = 0; x < 800; x++)
-	// 		my_mlx_pixel_put(&img, x, y, 0xFC0000);
-	// }
-	// mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, img.img, 0, 0);
+	t_myimg img;
+	img.img = mlx_new_image(p->mlx.mlx, 800, 600);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	for (int y = 0; y < 300; y++)
+	{
+		for (int x = 0; x < 800; x++)
+			my_mlx_pixel_put(&img, x, y, 0xFC0000);
+	}
+	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, img.img, 0, 0);
 	draw_minimap(p);
+	key_hook(p);
 	mlx_loop(p->mlx.mlx);
 }
