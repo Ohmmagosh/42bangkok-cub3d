@@ -36,7 +36,9 @@ MODULE1		= input.c \
 
 MODULE2		= process.c \
 				minimap.c \
-				key_hook.c
+				key_hook.c \
+				lodev.c \
+				bowkylion.c
 
 MODULE3		= free.c
 

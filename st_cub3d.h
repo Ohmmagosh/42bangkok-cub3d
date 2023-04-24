@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   st_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 19:00:45 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:50:16 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct s_vei
 	int	y;
 } t_vei;
 
+typedef	struct s_vef
+{
+	float	x;
+	float	y;
+} t_vef;
+
 typedef struct s_vec
 {
 	int	x;
@@ -35,16 +41,19 @@ typedef struct s_vec
 	int	z;
 } t_vec;
 
-typedef struct s_coord{
-	float x;
-	float y;
-}	t_coord;
-
 typedef struct s_line
 {
-	t_coord costart;
-	t_coord costop;
-	float	distance;
+	float	cameraX;
+	float	rayDirX;
+	float	rayDirY;
+	int		mapX;
+	int		mapY;
+	t_vef	sidedist;
+	t_vef	delta;
+	float	perpdist;
+	int		side;
+	t_vei	step;
+	t_vef	pos;
 }	t_line;
 
 typedef struct s_txd
@@ -95,7 +104,7 @@ typedef struct s_map
 typedef struct s_spt
 {
 	t_vei	pos;
-	int		di;
+	t_vei	di;
 	char	cstart;
 } t_spt;
 
@@ -113,7 +122,6 @@ typedef struct s_mlx
 	void		*mlx;
 	void		*win;
 	t_myimg		img;
-	t_line		*tline;
 } t_mlx;
 
 typedef struct s_pro
@@ -121,6 +129,7 @@ typedef struct s_pro
 	t_mlx	mlx;
 	t_map	map;
 	t_spt	spt;
+	t_line	tline;
 } t_pro;
 
 

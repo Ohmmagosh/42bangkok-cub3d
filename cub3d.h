@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 18:56:43 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:38:04 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 500
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define COLOR 0xFFFFFF
-# define BLOCK 100
+# define BLOCK 10
 
 # include "color.h"
 # include <stdio.h>
@@ -26,7 +26,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 # include "./st_cub3d.h"
+
 
 
 //init
@@ -71,7 +73,9 @@ int		findxy_minimap(char **map, int mode);
 void	process_cube(t_pro *p);
 void	draw_minimap(t_pro *p);
 void	key_hook(t_pro *p);
-
+void	lode_start(t_pro *p);
+void	wadwaii(float perp, t_pro *p, int i);
+void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color);
 
 //free
 void	free_twod_str(char	**str);

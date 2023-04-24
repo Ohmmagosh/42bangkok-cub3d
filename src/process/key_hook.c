@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:26:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 19:00:34 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:58:27 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,26 @@ int	hook(int key, t_pro *p)
 	mlx_clear_window(p->mlx.mlx, p->mlx.win);
 	player = get_pos_spt(p->map.map, 1);
 	if (key == 13)
+	{
 		player_move(player, p->map.map, 0);
+		p->spt.pos.y -= 1;
+	}
 	else if (key == 0)
+	{
 		player_move(player, p->map.map, 1);
+		p->spt.pos.x -= 1;
+	}
 	else if (key == 2)
+	{
 		player_move(player, p->map.map, 2);
+		p->spt.pos.x += 1;
+	}
 	else if (key == 1)
+	{
 		player_move(player, p->map.map, 3);
+		p->spt.pos.y += 1;
+	}
+	lode_start(p);
 	draw_minimap(p);
 	return (0);
 }

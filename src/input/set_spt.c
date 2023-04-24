@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_spt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:42:39 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/23 15:58:24 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:33:51 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,19 @@ t_vei	get_pos_spt(char **map, int mode)
 	return (vector_int);
 }
 
-int	get_direction_player(char player)
+t_vei	get_direction_player(char player)
 {
-	if (player == 'N')
-		return (270);
-	else if (player == 'E')
-		return (0);
-	else if (player == 'S')
-		return (90);
-	else if (player == 'W')
-		return (180);
-	else
-		return (-1);
+	t_vei	ret;
 
+	if (player == 'N')
+		ret = (t_vei){0, -1};
+	else if (player == 'E')
+		ret = (t_vei){1, 0};
+	else if (player == 'S')
+		ret = (t_vei){0, 1};
+	else if (player == 'W')
+		ret = (t_vei){-1, 0};
+	return (ret);
 }
 
 

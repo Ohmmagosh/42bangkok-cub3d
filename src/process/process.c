@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 19:20:14 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:50:13 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void process_cube(t_pro *p)
 		for (int x = 0; x < 800; x++)
 			my_mlx_pixel_put(&img, x, y, 0xFC0000);
 	}
+
+	// printf("%c %d %d %d %d\n", p->spt.cstart, p->spt.di.x, p->spt.di.y, p->spt.pos.x, p->spt.pos.y);
 	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, img.img, 0, 0);
+	lode_start(p);
 	draw_minimap(p);
 	key_hook(p);
 	mlx_loop(p->mlx.mlx);
