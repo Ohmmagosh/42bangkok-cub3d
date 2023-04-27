@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:58:20 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/27 16:36:53 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:04:50 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	draw_minimap(t_pro *p)
 	t_vei	pic_d;
 
 	pic_d = (t_vei){0, 0};
-	// pos = get_pos_spt(p->map.map, 1);
-	pos = (t_vei){p->tline.pos.x, p->tline.pos.y};
+	pos = get_pos_spt(p->map.map, 1);
 	pic = (t_vei){10, 10};
 	p->map.img = init_minimap_img(p);
 	if (pos.x - 5 < 0)
