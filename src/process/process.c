@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/26 22:29:30 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/27 19:38:34 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color)
 
 int	render(t_pro *p)
 {
+	mlx_clear_window(p->mlx.mlx, p->mlx.win);
 	lode_start(p);
 	draw_minimap(p);
 	return (0);
