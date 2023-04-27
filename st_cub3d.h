@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 21:50:16 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/27 01:00:05 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_line
 	int		side;
 	t_vei	step;
 	t_vef	pos;
+	int		news;
 }	t_line;
 
 typedef struct s_txd
@@ -106,6 +107,7 @@ typedef struct s_spt
 	t_vei	pos;
 	t_vei	di;
 	char	cstart;
+	t_vef	plane;
 } t_spt;
 
 typedef struct	s_myimg
@@ -130,6 +132,7 @@ typedef struct s_pro
 	t_map	map;
 	t_spt	spt;
 	t_line	tline;
+	t_vef	di;
 } t_pro;
 
 

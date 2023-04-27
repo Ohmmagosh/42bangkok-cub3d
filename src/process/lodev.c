@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:45:56 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/04/25 01:09:43 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/27 01:13:47 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_vef	set_plane(char c)
 
 int	iswall(int x, int y, t_pro *p)
 {
+	// printf("x -> %d\n", x);
+	// printf("y -> %d\n", y);
 	if (p->map.map[y][x] == '1')
 		return (1);
 	return (0);
@@ -32,29 +34,27 @@ int	iswall(int x, int y, t_pro *p)
 
 void	lode_start(t_pro *p)
 {
-	t_vef	plane;
 	int		i;
 
 	// p->tline.pos = (t_vef){p->spt.pos.x + 0.5, p->spt.pos.y + 0.5};
-	plane = set_plane(p->spt.cstart);
+	// p->spt.plane = set_plane(p->spt.cstart);
 	i = 0;
 	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
-
 	p->mlx.img.img = mlx_new_image(p->mlx.mlx, 800, 600);
 	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length,
 								&p->mlx.img.endian);
-	for (int y = 0; y < 300; y++)
-	{
-		for (int x = 0; x < 800; x++)
-			my_mlx_pixel_put(&p->mlx.img, x, y, 0xFC0000);
-	}
-
+	// for (int y = 0; y < 300; y++)
+	// {
+	// 	for (int x = 0; x < 800; x++)
+	// 		my_mlx_pixel_put(&p->mlx.img, x, y, 0xFC0000);
+	// }
 	while (i < WIN_WIDTH)
 	{
+	// printf("hello\n");
 		p->tline.cameraX = 2 * i / (float)WIN_WIDTH - 1;
-		p->tline.rayDirX = p->spt.di.x + plane.x * p->tline.cameraX;
-		p->tline.rayDirY = p->spt.di.y + plane.y * p->tline.cameraX;
+		p->tline.rayDirX = p->di.x + p->spt.plane.x * p->tline.cameraX;
+		p->tline.rayDirY = p->di.y + p->spt.plane.y * p->tline.cameraX;
 		p->tline.mapX = (int)p->tline.pos.x;
 		p->tline.mapY = (int)p->tline.pos.y;
 		if (p->tline.rayDirX == 0)
@@ -104,9 +104,22 @@ void	lode_start(t_pro *p)
 			p->tline.perpdist = (p->tline.sidedist.x - p->tline.delta.x);
 		else
 			p->tline.perpdist = (p->tline.sidedist.y - p->tline.delta.y);
+
+		if (p->tline.side == 0 && p->tline.rayDirX > 0)
+			p->tline.news = 'W';
+		else if (p->tline.side == 0 && p->tline.rayDirX < 0)
+			p->tline.news = 'E';
+		else if (p->tline.side == 1 && p->tline.rayDirY > 0)
+			p->tline.news = 'N';
+		else if (p->tline.side == 1 && p->tline.rayDirY < 0)
+			p->tline.news = 'S';
+
 		wadwaii(p->tline.perpdist, p, i);
 		// printf("walldist[%d] = %f\n", i, p->tline.perpdist);
 		i+= 1;
 	}
+	// printf("pos = %f pos = %f\n", p->tline.pos.x , p->tline.pos.y);
 	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 0, 0);
 }
+
+	// printf("hello\n");

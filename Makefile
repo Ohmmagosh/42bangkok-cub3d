@@ -37,6 +37,7 @@ MODULE1		= input.c \
 MODULE2		= process.c \
 				minimap.c \
 				key_hook.c \
+				key_hook2.c \
 				lodev.c \
 				bowkylion.c
 
