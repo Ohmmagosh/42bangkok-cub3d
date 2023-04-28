@@ -25,7 +25,7 @@ void	wadwaii(float perp, t_pro *p, int i)
 	int		texY;
 	int	y;
 
-	walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/walltt30px.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+	walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/In1gHq.xpm", &walltt.line_length, &walltt.bits_per_pixel);
 
 	walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
 
