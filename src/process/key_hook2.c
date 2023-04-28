@@ -8,7 +8,7 @@ void	rotate_hook(float angdegree, t_pro *p)
 
 	angrad = angdegree * (M_PI / 180.0);
 	// angrad = 3.00;
-	printf("%f\n", angrad);
+	// printf("%f\n", angrad);
 	olddirx = p->di.x;
 	oldplanex = p->spt.plane.x;
 
