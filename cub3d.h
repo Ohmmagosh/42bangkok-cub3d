@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/26 18:27:39 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/28 22:32:05 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	wadwaii(float perp, t_pro *p, int i);
 void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color);
 void	rotate_hook(float	angdegree, t_pro *p);
 t_vef	set_plane(char c);
+int		mouse_hook(int button, int x, int y, t_pro *p);
 
 //free
 void	free_twod_str(char	**str);

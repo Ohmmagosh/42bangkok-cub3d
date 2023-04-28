@@ -46,3 +46,12 @@ void	rotate_hook(float angdegree, t_pro *p)
 //     }
 //   }
 // }
+
+int	mouse_hook(int button, int x, int y, t_pro *p)
+{
+	if (button == 4)
+		rotate_hook(-5.0, p);
+	else if (button == 5)
+		rotate_hook(5.0, p);
+	// player_move(p);
+}
