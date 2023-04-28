@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:26:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/27 22:16:59 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/04/28 22:07:08 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	key_hook(t_pro *p)
 {
 	// mlx_key_hook(p->mlx.win, hook, p);
 	mlx_hook(p->mlx.win, 2, 1L<<0, hook, p);
+	mlx_mouse_hook(p->mlx.win, mouse_hook, p);
 	return ;
 }
 
