@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/02 21:25:08 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:42:27 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_txd
 {
 	char	*direct;
 	char	*path;
+	void	*img;
+	void	*addr;
 } t_txd;
 
 typedef struct s_col
@@ -123,6 +125,17 @@ typedef struct	s_myimg
 	int		endian;
 }				t_myimg;
 
+typedef struct s_render
+{
+	t_myimg	n;
+	t_myimg	s;
+	t_myimg	w;
+	t_myimg	e;
+	t_myimg bg;
+	int		floor;
+	int		ceil;
+} t_ren;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -137,6 +150,7 @@ typedef struct s_pro
 	t_spt	spt;
 	t_line	tline;
 	t_vef	di;
+	t_ren	render;
 } t_pro;
 
 

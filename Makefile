@@ -32,14 +32,16 @@ MODULE1		= input.c \
 				set_map.c \
 				set_map_utils.c \
 				set_tex.c \
-				set_spt.c
+				set_spt.c \
+				set_render.c
 
 MODULE2		= process.c \
 				minimap.c \
 				key_hook.c \
 				key_hook2.c \
 				lodev.c \
-				bowkylion.c
+				bowkylion.c \
+				background.c
 
 MODULE3		= free.c
 

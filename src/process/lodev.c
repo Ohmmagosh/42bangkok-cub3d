@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:45:56 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/05/02 00:53:23 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:41:01 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ t_vef	set_plane(char c)
 
 int	iswall(int x, int y, t_pro *p)
 {
-	// printf("x -> %d\n", x);
-	// printf("y -> %d\n", y);
 	if (p->map.map[y][x] == '1')
 		return (1);
 	else if (p->map.map[y][x] == 'D')
@@ -38,22 +36,14 @@ void	lode_start(t_pro *p)
 {
 	int		i;
 
-	// p->tline.pos = (t_vef){p->spt.pos.x + 0.5, p->spt.pos.y + 0.5};
-	// p->spt.plane = set_plane(p->spt.cstart);
 	i = 0;
 	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
 	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length,
 								&p->mlx.img.endian);
-	// for (int y = 0; y < 300; y++)
-	// {
-	// 	for (int x = 0; x < 800; x++)
-	// 		my_mlx_pixel_put(&p->mlx.img, x, y, 0xFC0000);
-	// }
 	while (i < WIN_WIDTH)
 	{
-	// printf("hello\n");
 		p->tline.cameraX = 2 * i / (float)WIN_WIDTH - 1;
 		p->tline.rayDirX = p->di.x + p->spt.plane.x * p->tline.cameraX;
 		p->tline.rayDirY = p->di.y + p->spt.plane.y * p->tline.cameraX;
@@ -117,11 +107,7 @@ void	lode_start(t_pro *p)
 			p->tline.news = 'S';
 
 		wadwaii(p->tline.perpdist, p, i);
-		// printf("walldist[%d] = %f\n", i, p->tline.perpdist);
 		i+= 1;
 	}
-	// printf("pos = %f pos = %f\n", p->tline.pos.x , p->tline.pos.y);
 	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 0, 0);
 }
-
-	// printf("hello\n");

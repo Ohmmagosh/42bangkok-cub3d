@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_hook2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/02 01:01:45 by psuanpro          #+#    #+#             */
+/*   Updated: 2023/05/02 01:01:45 by psuanpro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../cub3d.h"
 
 void	rotate_hook(float angdegree, t_pro *p)
@@ -46,3 +58,12 @@ void	rotate_hook(float angdegree, t_pro *p)
 //     }
 //   }
 // }
+
+int	mouse_hook(int button, int x, int y, t_pro *p)
+{
+	if (button == 4)
+		rotate_hook(-5.0, p);
+	else if (button == 5)
+		rotate_hook(5.0, p);
+	// player_move(p);
+}
