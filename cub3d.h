@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/28 22:32:05 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:33:22 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 # define COLOR 0xFFFFFF
 # define BLOCK 10
 
@@ -69,6 +69,8 @@ t_tex	set_tex(const char **file);
 t_spt	set_spt(char **map);
 t_vei	get_pos_spt(char **map, int mode);
 int		findxy_minimap(char **map, int mode);
+t_ren	set_render(t_tex *tex, void *mlx, void *win);
+
 //process
 void	process_cube(t_pro *p);
 void	draw_minimap(t_pro *p);
@@ -79,6 +81,8 @@ void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color);
 void	rotate_hook(float	angdegree, t_pro *p);
 t_vef	set_plane(char c);
 int		mouse_hook(int button, int x, int y, t_pro *p);
+void	create_background(t_pro *p);
+void	draw_background(t_pro *p);
 
 //free
 void	free_twod_str(char	**str);

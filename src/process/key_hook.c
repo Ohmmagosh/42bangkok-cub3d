@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:26:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/28 22:07:08 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:34:14 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	hook(int key, t_pro *p)
 			p->tline.pos.x += p->di.x * step;
 		if(p->map.map[(int)(p->tline.pos.y + p->di.y * step)][(int)(p->tline.pos.x)] != '1')
 			p->tline.pos.y += p->di.y * step;
-		// player_move(p);
 	}
 	else if (key == 0)
 	{

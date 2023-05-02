@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_spt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:42:39 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/24 20:33:51 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:05:27 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-char	find_char_player(char **map, int x, int y)
-{
-	return (map[y][x]);
-}
 
 int	findxy_player(char **map, int mode)
 {

@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:58:20 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/27 17:04:50 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/04/29 00:15:56 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_mini	init_minimap_img(t_pro *p)
 {
 	t_mini	mini;
 
-	mini.wall = init_img(p->mlx.mlx, "./src/process/floor15px.xpm");
-	mini.floor = init_img(p->mlx.mlx, "./src/process/wall15px.xpm");
-	mini.player = init_img(p->mlx.mlx, "./src/process/player15px.xpm");
+	mini.wall = init_img(p->mlx.mlx, "./img/wall15px.xpm");
+	mini.floor = init_img(p->mlx.mlx, "./img/floor15px.xpm");
+	mini.player = init_img(p->mlx.mlx, "./img/player15px.xpm");
 	return (mini);
 }
 
@@ -60,10 +60,7 @@ void	create_minimap(t_vei pos, t_pro *p)
 	{
 		vx.x = 0;
 		while (p->map.map[pos.y][pos.x] && vx.x < 10)
-		{
-
 			vx.x++;
-		}
 		vx.y++;
 	}
 }
