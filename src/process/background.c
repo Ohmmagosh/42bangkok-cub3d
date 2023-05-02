@@ -6,7 +6,7 @@
 /*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:05:40 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/02 12:49:06 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:49:58 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	create_background(t_pro *p)
 	t_vei	vex;
 
 	vex = (t_vei){0, 0};
-
 	while (vex.y < WIN_HEIGHT)
 	{
 		vex.x = 0;
