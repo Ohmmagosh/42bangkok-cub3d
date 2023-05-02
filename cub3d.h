@@ -6,15 +6,15 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/26 18:27:39 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 00:00:34 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1290
+# define WIN_HEIGHT 720
 # define COLOR 0xFFFFFF
 # define BLOCK 10
 

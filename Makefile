@@ -141,6 +141,9 @@ ${NAME}: ${OBJS}
 run: re
 	./cub3d map/minimalist.cub
 
+runn: re
+	./cub3d map/minimaldoor.cub
+
 clean:
 	@make -C lib/libft clean
 	@make -C lib/mlx clean

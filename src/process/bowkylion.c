@@ -25,9 +25,32 @@ void	wadwaii(float perp, t_pro *p, int i)
 	int		texY;
 	int	y;
 
-	walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/walltt30px.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+	// /Users/rchiewli/mclone/src/process/Screen-Shot-2023-05-01-at-11.49.58-PM.xpm
 
-	walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
+	if (p->tline.news == 'N')
+	{
+		walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/hello.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+
+		walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
+	}
+	else if (p->tline.news == 'E')
+	{
+		walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/walltt30px.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+
+		walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
+	}
+	else if (p->tline.news == 'W')
+	{
+		walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/walltt30px.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+
+		walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
+	}
+	else if (p->tline.news == 'S')
+	{
+		walltt.img = mlx_xpm_file_to_image(p->mlx.mlx, "./src/process/walltt30px.xpm", &walltt.line_length, &walltt.bits_per_pixel);
+
+		walltt.addr = mlx_get_data_addr(walltt.img, &walltt.bits_per_pixel, &walltt.line_length, &walltt.endian);
+	}
 
 	height = (int)(WIN_HEIGHT / perp);
 	dstart = -height / 2 + WIN_HEIGHT / 2;
@@ -93,14 +116,7 @@ void	wadwaii(float perp, t_pro *p, int i)
 	// if (height > WIN_HEIGHT - 1)
 	// 	height = WIN_HEIGHT - 1;
 
-	// if (p->tline.news == 'N')
-	// 	rgbtq = 0xFF0000;
-	// else if (p->tline.news == 'E')
-	// 	rgbtq = 0xFFFF00;
-	// else if (p->tline.news == 'W')
-	// 	rgbtq = 0x00FF00;
-	// else if (p->tline.news == 'S')
-	// 	rgbtq = 0x00FFFF;
+
 
 	// rc->tex_x = (int)(rc->wall_hit_pos * (double) tex->w);
 	// texX = (int)(wallX * (float)(texwidth));

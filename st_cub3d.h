@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/27 01:00:05 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:25:08 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ typedef struct s_line
 	t_vei	step;
 	t_vef	pos;
 	int		news;
+	int		Wall;
+	int		stepcount;
+	t_vei	doorpos;
+	int		doorflag;
 }	t_line;
 
 typedef struct s_txd

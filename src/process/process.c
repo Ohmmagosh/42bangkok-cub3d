@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:41:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/28 00:13:10 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:08:00 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void process_cube(t_pro *p)
 {
 	p->mlx.mlx = mlx_init();
 	p->mlx.win = mlx_new_window(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	p->tline.stepcount = 0;
+	p->tline.doorflag = 0;
+	p->tline.doorpos = (t_vei){-1, -1};
 	// t_myimg img;
 	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, 800, 600);
 	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, \

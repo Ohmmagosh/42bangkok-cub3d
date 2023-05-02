@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 23:23:03 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/29 22:00:57 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:01:31 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	valid_map_char_dup(const char **file)
 int	is_map_char(char c)
 {
 	if (c == '1' || c == '0' || c == 'N' || c == 'E' || \
-		c == 'W' || c == 'S' || c == ' ')
+		c == 'W' || c == 'S' || c == ' ' || c == 'D')
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lodev.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:45:56 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/04/27 17:03:22 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/02 00:53:23 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	iswall(int x, int y, t_pro *p)
 	// printf("y -> %d\n", y);
 	if (p->map.map[y][x] == '1')
 		return (1);
+	else if (p->map.map[y][x] == 'D')
+		return (2);
 	return (0);
 }
 
@@ -41,7 +43,7 @@ void	lode_start(t_pro *p)
 	i = 0;
 	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
-	p->mlx.img.img = mlx_new_image(p->mlx.mlx, 800, 600);
+	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length,
 								&p->mlx.img.endian);
 	// for (int y = 0; y < 300; y++)
