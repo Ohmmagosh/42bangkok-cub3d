@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:39:07 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/19 15:10:51 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:14:07 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	init_mlx_st(t_mlx *mlx)
 	mlx->mlx = NULL;
 	mlx->win = NULL;
 }
-
 
 void	init_map_st(t_map *map)
 {

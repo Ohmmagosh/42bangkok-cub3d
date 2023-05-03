@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 23:45:53 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/30 20:44:36 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:09:24 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,21 @@ int	texture_access(const char **file)
 	t_txd	texture[4];
 	int		err;
 	int		i;
+	int		j;
 
 	err = 0;
-	i = 0;
+	i = -1;
+	j = -1;
 	texture[NO] = get_texture("NO ", file);
 	texture[SO] = get_texture("SO ", file);
 	texture[WE] = get_texture("WE ", file);
 	texture[EA] = get_texture("EA ", file);
-	while (i < 4)
+	while (++i < 4)
 	{
 		if (!open_file(texture[i].path))
 			err++ ;
-		i++ ;
 	}
-	for (int j = 0; j < 4; j++)
+	while (++j < 4)
 	{
 		free(texture[j].direct);
 		free(texture[j].path);
@@ -76,7 +77,7 @@ int	len_texture(char *texture, const char **file)
 	return (0);
 }
 
-int dup_texture(const char **file)
+int	dup_texture(const char **file)
 {
 	int	error;
 
@@ -111,4 +112,3 @@ void	valid_texture(const char *path)
 		print_msg_err("texture incorrect");
 	return ;
 }
-

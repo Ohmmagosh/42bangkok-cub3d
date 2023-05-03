@@ -6,97 +6,90 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:45:56 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/05/02 23:41:01 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 04:58:21 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-t_vef	set_plane(char c)
+void	lode_start_delta_intit(t_pro *p)
 {
-	t_vef	rst;
-
-	if (c == 'N' || c == 'S')
-		rst = (t_vef){0.66, 0};
+	if (p->tline.rayDirX == 0)
+		p->tline.delta.x = 1e30;
 	else
-		rst = (t_vef){0, 0.66};
-	return (rst);
+		p->tline.delta.x = fabsf(1 / p->tline.rayDirX);
+	if (p->tline.rayDirY == 0)
+		p->tline.delta.y = 1e30;
+	else
+		p->tline.delta.y = fabsf(1 / p->tline.rayDirY);
+	return ;
 }
 
-int	iswall(int x, int y, t_pro *p)
+void	lode_start_step_dist_init(t_pro *p)
 {
-	if (p->map.map[y][x] == '1')
-		return (1);
-	else if (p->map.map[y][x] == 'D')
-		return (2);
-	return (0);
+	if (p->tline.rayDirX < 0)
+	{
+		p->tline.step.x = -1;
+		p->tline.sidedist.x = (p->tline.pos.x - p->tline.mapX) * \
+									p->tline.delta.x;
+	}
+	else
+	{
+		p->tline.step.x = 1;
+		p->tline.sidedist.x = (p->tline.mapX + 1.0 - p->tline.pos.x) * \
+									p->tline.delta.x;
+	}
+	if (p->tline.rayDirY < 0)
+	{
+		p->tline.step.y = -1;
+		p->tline.sidedist.y = (p->tline.pos.y - p->tline.mapY) * \
+									p->tline.delta.y;
+	}
+	return ;
+}
+
+void	lode_start_loop(t_pro *p)
+{
+	while (!iswall(p->tline.mapX, p->tline.mapY, p))
+	{
+		if (p->tline.sidedist.x < p->tline.sidedist.y)
+		{
+			p->tline.sidedist.x += p->tline.delta.x;
+			p->tline.mapX += p->tline.step.x;
+			p->tline.side = 0;
+		}
+		else
+		{
+			p->tline.sidedist.y += p->tline.delta.y;
+			p->tline.mapY += p->tline.step.y;
+			p->tline.side = 1;
+		}
+	}
+	return ;
+}
+
+void	lode_start_perp(t_pro *p)
+{
+	if (p->tline.side == 0)
+		p->tline.perpdist = (p->tline.sidedist.x - p->tline.delta.x);
+	else
+		p->tline.perpdist = (p->tline.sidedist.y - p->tline.delta.y);
+	return ;
 }
 
 void	lode_start(t_pro *p)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	// p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	// p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length, &p->mlx.img.endian);
-	p->mlx.img.img = mlx_new_image(p->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	p->mlx.img.addr = mlx_get_data_addr(p->mlx.img.img, &p->mlx.img.bits_per_pixel, &p->mlx.img.line_length,
-								&p->mlx.img.endian);
+	create_background(p);
 	while (i < WIN_WIDTH)
 	{
-		p->tline.cameraX = 2 * i / (float)WIN_WIDTH - 1;
-		p->tline.rayDirX = p->di.x + p->spt.plane.x * p->tline.cameraX;
-		p->tline.rayDirY = p->di.y + p->spt.plane.y * p->tline.cameraX;
-		p->tline.mapX = (int)p->tline.pos.x;
-		p->tline.mapY = (int)p->tline.pos.y;
-		if (p->tline.rayDirX == 0)
-			p->tline.delta.x = 1e30;
-		else
-			p->tline.delta.x = fabsf(1 / p->tline.rayDirX);
-		if (p->tline.rayDirY == 0)
-			p->tline.delta.y = 1e30;
-		else
-			p->tline.delta.y = fabsf(1 / p->tline.rayDirY);
-		if (p->tline.rayDirX < 0)
-		{
-			p->tline.step.x = -1;
-			p->tline.sidedist.x = (p->tline.pos.x - p->tline.mapX) * p->tline.delta.x;
-		}
-		else
-		{
-			p->tline.step.x = 1;
-			p->tline.sidedist.x = (p->tline.mapX + 1.0 - p->tline.pos.x) * p->tline.delta.x;
-		}
-		if (p->tline.rayDirY < 0)
-		{
-			p->tline.step.y = -1;
-			p->tline.sidedist.y = (p->tline.pos.y - p->tline.mapY) * p->tline.delta.y;
-		}
-		else
-		{
-			p->tline.step.y = 1;
-			p->tline.sidedist.y = (p->tline.mapY + 1.0 - p->tline.pos.y) * p->tline.delta.y;
-		}
-		while (!iswall(p->tline.mapX, p->tline.mapY, p))
-		{
-			if (p->tline.sidedist.x < p->tline.sidedist.y)
-			{
-				p->tline.sidedist.x += p->tline.delta.x;
-				p->tline.mapX += p->tline.step.x;
-				p->tline.side = 0;
-			}
-			else
-			{
-				p->tline.sidedist.y += p->tline.delta.y;
-				p->tline.mapY += p->tline.step.y;
-				p->tline.side = 1;
-			}
-		}
-		if (p->tline.side == 0)
-			p->tline.perpdist = (p->tline.sidedist.x - p->tline.delta.x);
-		else
-			p->tline.perpdist = (p->tline.sidedist.y - p->tline.delta.y);
-
+		lode_start_tline_init(p, i);
+		lode_start_delta_intit(p);
+		lode_start_step_dist_init(p);
+		lode_start_loop(p);
+		lode_start_perp(p);
 		if (p->tline.side == 0 && p->tline.rayDirX > 0)
 			p->tline.news = 'W';
 		else if (p->tline.side == 0 && p->tline.rayDirX < 0)
@@ -105,9 +98,9 @@ void	lode_start(t_pro *p)
 			p->tline.news = 'N';
 		else if (p->tline.side == 1 && p->tline.rayDirY < 0)
 			p->tline.news = 'S';
-
 		wadwaii(p->tline.perpdist, p, i);
-		i+= 1;
+		i += 1;
 	}
-	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->mlx.img.img, 0, 0);
+	mlx_put_image_to_window(p->mlx.mlx, p->mlx.win, p->render.bg.img, 0, 0);
+	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_texture_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:54:54 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/29 18:30:14 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:04:40 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_txd	split_texture_path(char *texture)
 	tdetail.direct = ft_strdup(split[0]);
 	tdetail.path = ft_strdup_nonl(split[1]);
 	free_twod_str(split);
-	//free(split);
 	split = NULL;
 	return (tdetail);
 }

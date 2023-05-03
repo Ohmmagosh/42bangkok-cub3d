@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/05/02 23:42:14 by rchiewli         ###   ########.fr       */
+/*   Created: 2023/05/04 05:09:55 by rchiewli          #+#    #+#             */
+/*   Updated: 2023/05/04 05:10:22 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../cub3d.h"
 
@@ -39,10 +38,10 @@ int	len_map_token(char **map, char token)
 
 	i = 0;
 	len = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (map[i][j] == token)
 				len++ ;
@@ -99,10 +98,10 @@ int	valid_map_char(const char **file)
 	err = 0;
 	i = 0;
 	map = get_map(file);
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (!is_map_char(map[i][j]))
 				err++ ;

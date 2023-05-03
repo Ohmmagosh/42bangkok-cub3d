@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_spt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:42:39 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/02 01:05:27 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:11:23 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	findxy_minimap(char **map, int mode)
 t_vei	get_pos_spt(char **map, int mode)
 {
 	t_vei	vector_int;
+
 	if (mode == 0)
 	{
 		vector_int.x = findxy_player(map, 0);
@@ -92,7 +93,6 @@ t_vei	get_direction_player(char player)
 		ret = (t_vei){-1, 0};
 	return (ret);
 }
-
 
 t_spt	set_spt(char **map)
 {

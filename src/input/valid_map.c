@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <psuanpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:16:37 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/01 21:50:33 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:10:43 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	find_str_line(char *texture, const char **file)
 	while (tmp[len])
 	{
 		if (!ft_strncmp(tmp[len], texture, ft_strlen(texture)))
-			break;
+			break ;
 		len++ ;
 	}
 	return (len);

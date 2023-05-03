@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/02 23:42:27 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 00:59:22 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_minimap
 	t_img	wall;
 	t_img	floor;
 	t_img	player;
+	t_img	door;
 }	t_mini;
 
 typedef struct s_map
@@ -132,6 +133,17 @@ typedef struct s_render
 	t_myimg	w;
 	t_myimg	e;
 	t_myimg bg;
+	t_myimg	wall;
+	t_myimg hb0;
+	t_myimg hb1;
+	t_myimg hb2;
+	t_myimg hb3;
+	t_myimg hb4;
+	t_myimg hb5;
+	t_myimg hl0;
+	t_myimg hl1;
+	t_myimg hl2;
+	t_myimg hl3;
 	int		floor;
 	int		ceil;
 } t_ren;
@@ -140,7 +152,6 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	t_myimg		img;
 } t_mlx;
 
 typedef struct s_pro
@@ -151,6 +162,8 @@ typedef struct s_pro
 	t_line	tline;
 	t_vef	di;
 	t_ren	render;
+	int		timer;
+	int		chkhand;
 } t_pro;
 
 

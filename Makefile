@@ -10,7 +10,7 @@
 ##                                                                              #
 ## **************************************************************************** #
 
-NAME		= cub3d
+NAME		= cub3D
 
 MAIN		= main.c
 MAIN_DIR	= ./
@@ -33,15 +33,19 @@ MODULE1		= input.c \
 				set_map_utils.c \
 				set_tex.c \
 				set_spt.c \
-				set_render.c
+				set_render.c \
+				set_tline.c
 
 MODULE2		= process.c \
 				minimap.c \
+				minimap_utils.c \
 				key_hook.c \
-				key_hook2.c \
+				key_hook_utils.c \
 				lodev.c \
-				bowkylion.c \
-				background.c
+				lodev_utils.c \
+				draw_scene.c \
+				background.c \
+				hand_animation.c
 
 MODULE3		= free.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_texture_utils1.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 21:46:15 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/27 01:24:08 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:04:23 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ t_col	get_color_t_col(const char *color)
 	col.g = ft_atoi(rgb[1]);
 	col.b = ft_atoi(rgb[2]);
 	free_twod_str(rgb);
-	//free(rgb);
 	rgb = NULL;
 	return (col);
 }
-
 
 int	valid_color(const char **file)
 {
@@ -54,4 +52,3 @@ int	valid_color(const char **file)
 		return (1);
 	return (0);
 }
-

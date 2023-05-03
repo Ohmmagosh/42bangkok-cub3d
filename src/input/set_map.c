@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:28:09 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/04/04 19:03:54 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:13:41 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**set_map_str(const char **map, int *num_space, int len)
 
 char	**clean_space(const char **map)
 {
-	int	*num_space;
+	int		*num_space;
 	char	**ret;
 	int		i;
 	int		len;
@@ -88,7 +88,7 @@ char	**clean_space(const char **map)
 	len = 0;
 	ret = NULL;
 	num_space = set_numspace_array(map, &len);
-	ret = set_map_str(map, num_space ,len);
+	ret = set_map_str(map, num_space, len);
 	free(num_space);
 	return (ret);
 }
@@ -99,12 +99,10 @@ t_map	set_map(const char *path)
 	char	**file;
 	char	**map_str;
 
-	//map_str = NULL;
-	//file = NULL;
 	init_map_st(&map);
 	file = get_file_fd(path);
 	map_str = get_map((const char **)file);
- 	map.map = clean_space((const char **)map_str);
+	map.map = clean_space((const char **)map_str);
 	map.tex = set_tex((const char **)file);
 	free_twod_str(map_str);
 	free_twod_str(file);

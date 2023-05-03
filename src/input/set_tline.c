@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_file.c                                       :+:      :+:    :+:   */
+/*   set_tline.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 23:47:42 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:10:33 by rchiewli         ###   ########.fr       */
+/*   Created: 2023/05/03 22:51:58 by rchiewli          #+#    #+#             */
+/*   Updated: 2023/05/03 22:57:13 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	valid_file(const char *path)
+t_line	set_tline(t_vei *pos)
 {
-	int	error;
+	t_line	ret;
 
-	error = 0;
-	if (!open_file(path))
-		error++ ;
-	if (error != 0)
-		print_msg_err("file not found!!");
-	return ;
+	ret.stepcount = 0;
+	ret.doorflag = 0;
+	ret.doorpos = (t_vei){-1, -1};
+	ret.pos = (t_vef){pos->x + 0.5, pos->y + 0.5};
+	return (ret);
 }

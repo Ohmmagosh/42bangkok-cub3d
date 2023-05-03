@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/02 23:41:26 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 04:57:54 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ t_spt	set_spt(char **map);
 t_vei	get_pos_spt(char **map, int mode);
 int		findxy_minimap(char **map, int mode);
 t_ren	set_render(t_tex *tex, void *mlx, void *win);
+t_line	set_tline(t_vei *pos);
+t_myimg	set_myimg(char *path, void *mlx, void *win);
+t_myimg	set_myimg_new(void *mlx, int width, int height);
 
 //process
 void	process_cube(t_pro *p);
@@ -83,6 +86,16 @@ t_vef	set_plane(char c);
 int		mouse_hook(int button, int x, int y, t_pro *p);
 void	create_background(t_pro *p);
 void	draw_background(t_pro *p);
+void	hand_animation(t_pro *p);
+int		close_win(t_pro *p);
+char	**init_minimap(void);
+t_img	init_img(void *mlx, char *path);
+t_mini	init_minimap_img(t_pro *p);
+void	create_minimap(t_vei pos, t_pro *p);
+void	put_img_to_win(t_pro *p, int mode, t_vei pic);
+int		iswall(int x, int y, t_pro *p);
+void	lode_start_tline_init(t_pro *p, int i);
+
 
 //free
 void	free_twod_str(char	**str);
