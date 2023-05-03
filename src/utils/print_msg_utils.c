@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_msg_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 20:56:35 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/15 22:50:02 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:16:13 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	lenx_file(const char *path)
 	int	len;
 
 	len = 0;
-
 	return (len);
 }
 
@@ -54,7 +53,7 @@ int	leny_file(const char *path)
 	len = 0;
 	tmp = get_next_line(fd);
 	len++;
-	while(tmp)
+	while (tmp)
 	{
 		free(tmp);
 		tmp = get_next_line(fd);

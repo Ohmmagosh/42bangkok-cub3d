@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 22:02:36 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/23 22:47:28 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:16:23 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_twod_str(const char **str)
 
 	i = 0;
 	tmp = (char **)str;
-	while(tmp[i])
+	while (tmp[i])
 	{
 		ft_printf("tmp[%d] -> %s\n", i, tmp[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 04:57:54 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:20:33 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 # include <math.h>
 # include "./st_cub3d.h"
 
-
-
 //init
 void	init_cube(t_pro *p);
 t_txd	init_t_txd( void );
@@ -38,7 +36,7 @@ t_tex	init_t_tex( void );
 t_txd	init_t_txd_v(char *direct, char *path);
 void	init_map_st(t_map *map);
 int		*init_array_int(int size);
-void	init_xyangle();
+void	init_xyangle(void);
 void	init_mlx_st(t_mlx *mlx);
 
 //input
@@ -81,7 +79,7 @@ void	key_hook(t_pro *p);
 void	lode_start(t_pro *p);
 void	wadwaii(float perp, t_pro *p, int i);
 void	my_mlx_pixel_put(t_myimg *data, int x, int y, int color);
-void	rotate_hook(float	angdegree, t_pro *p);
+void	rotate_hook(float angdegree, t_pro *p);
 t_vef	set_plane(char c);
 int		mouse_hook(int button, int x, int y, t_pro *p);
 void	create_background(t_pro *p);
@@ -95,7 +93,6 @@ void	create_minimap(t_vei pos, t_pro *p);
 void	put_img_to_win(t_pro *p, int mode, t_vei pic);
 int		iswall(int x, int y, t_pro *p);
 void	lode_start_tline_init(t_pro *p, int i);
-
 
 //free
 void	free_twod_str(char	**str);

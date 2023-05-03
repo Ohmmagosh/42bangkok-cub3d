@@ -6,14 +6,14 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 00:59:22 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 05:19:56 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ST_CUB3D_H
 # define ST_CUB3D_H
 
-enum texture_direction {
+enum	e_texture_direction {
 	NO,
 	SO,
 	WE,
@@ -26,20 +26,20 @@ typedef struct s_vei
 {
 	int	x;
 	int	y;
-} t_vei;
+}	t_vei;
 
 typedef	struct s_vef
 {
 	float	x;
 	float	y;
-} t_vef;
+}	t_vef;
 
 typedef struct s_vec
 {
 	int	x;
 	int	y;
 	int	z;
-} t_vec;
+}	t_vec;
 
 typedef struct s_line
 {
@@ -67,14 +67,14 @@ typedef struct s_txd
 	char	*path;
 	void	*img;
 	void	*addr;
-} t_txd;
+}	t_txd;
 
 typedef struct s_col
 {
 	int	r;
 	int	g;
 	int	b;
-} t_col;
+}	t_col;
 
 typedef struct s_tex
 {
@@ -84,7 +84,7 @@ typedef struct s_tex
 	t_txd	so;
 	t_txd	we;
 	t_txd	ea;
-} t_tex;
+}	t_tex;
 
 typedef struct s_img
 {
@@ -115,7 +115,7 @@ typedef struct s_spt
 	t_vei	di;
 	char	cstart;
 	t_vef	plane;
-} t_spt;
+}	t_spt;
 
 typedef struct	s_myimg
 {
@@ -132,27 +132,27 @@ typedef struct s_render
 	t_myimg	s;
 	t_myimg	w;
 	t_myimg	e;
-	t_myimg bg;
+	t_myimg	bg;
 	t_myimg	wall;
-	t_myimg hb0;
-	t_myimg hb1;
-	t_myimg hb2;
-	t_myimg hb3;
-	t_myimg hb4;
-	t_myimg hb5;
-	t_myimg hl0;
-	t_myimg hl1;
-	t_myimg hl2;
-	t_myimg hl3;
+	t_myimg	hb0;
+	t_myimg	hb1;
+	t_myimg	hb2;
+	t_myimg	hb3;
+	t_myimg	hb4;
+	t_myimg	hb5;
+	t_myimg	hl0;
+	t_myimg	hl1;
+	t_myimg	hl2;
+	t_myimg	hl3;
 	int		floor;
 	int		ceil;
-} t_ren;
+}	t_ren;
 
 typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-} t_mlx;
+}	t_mlx;
 
 typedef struct s_pro
 {
@@ -164,7 +164,6 @@ typedef struct s_pro
 	t_ren	render;
 	int		timer;
 	int		chkhand;
-} t_pro;
-
+}	t_pro;
 
 #endif
