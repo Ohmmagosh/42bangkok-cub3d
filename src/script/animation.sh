@@ -61,7 +61,6 @@ BLA_bomb=( 0.25 '💣   ' ' 💣  ' '  💣 ' '   💣' '   💣' '   💣' '   
 animation () {
 	for i in ${BLA_filling_bar[@]}; do
 		echo -ne "\r${GRN}$i${RES}\r";
-		sleep 0.01;
 	done
 	printf "\n"
 }
