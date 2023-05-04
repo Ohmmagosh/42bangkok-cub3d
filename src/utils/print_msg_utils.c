@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 20:56:35 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:16:13 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:12:51 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ void	print_msg_err(char *msg)
 	ft_putstr_fd("\n", 2);
 	exit(0);
 	return ;
-}
-
-int	lenx_file(const char *path)
-{
-	int	len;
-
-	len = 0;
-	return (len);
 }
 
 int	leny_file(const char *path)

@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:16:37 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:10:43 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:11:06 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	valid_map(const char *path)
 {
 	char	**file;
 	int		err_len;
-	char	**map;
 
 	err_len = 0;
 	file = get_file_fd(path);

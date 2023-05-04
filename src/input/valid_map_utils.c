@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 05:09:55 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/05/04 05:10:22 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:11:16 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	len_token_one(const int *array, size_t size)
 
 	len = 0;
 	i = 0;
-	while (i < size)
+	while (i < (int)size)
 	{
 		if (array[i] >= 1)
 			len++ ;

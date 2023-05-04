@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:42:39 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:11:23 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:12:10 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_vei	get_pos_spt(char **map, int mode)
 {
 	t_vei	vector_int;
 
+	vector_int = (t_vei){0, 0};
 	if (mode == 0)
 	{
 		vector_int.x = findxy_player(map, 0);
@@ -83,6 +84,7 @@ t_vei	get_direction_player(char player)
 {
 	t_vei	ret;
 
+	ret = (t_vei){0, 0};
 	if (player == 'N')
 		ret = (t_vei){0, -1};
 	else if (player == 'E')

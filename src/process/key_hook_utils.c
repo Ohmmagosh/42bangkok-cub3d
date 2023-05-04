@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:01:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 04:33:55 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:12:41 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	rotate_hook(float angdegree, t_pro *p)
 
 int	mouse_hook(int button, int x, int y, t_pro *p)
 {
+	(void)x;
+	(void)y;
 	if (button == 4)
 		rotate_hook(-5.0, p);
 	else if (button == 5)

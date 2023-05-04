@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:07:58 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:12:18 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:12:24 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_myimg	set_myimg(char *path, void *mlx, void *win)
 {
 	t_myimg	ret;
 
+	(void)win;
 	ret.img = mlx_xpm_file_to_image(mlx, path, &ret.line_length, \
 									&ret.bits_per_pixel);
 	ret.addr = mlx_get_data_addr(ret.img, &ret.bits_per_pixel, \

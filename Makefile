@@ -109,22 +109,22 @@ CUBE =  echo '$(BLU)________$(RES)/\\\\\\\\\\\\\\\\\\$(BLU)________________$(RES
 
 #input
 ${OBJ_DIR}%.o: ${MODULE1_DIR}%.c
-	$(CC) -g -c -o $@ $^
+	$(CC) -g $(CFLAGS) -c -o $@ $^
 
 #process
 ${OBJ_DIR}%.o: ${MODULE2_DIR}%.c
-	$(CC) -g -c -o $@ $^
+	$(CC) -g $(CFLAGS) -c -o $@ $^
 
 #free
 ${OBJ_DIR}%.o: ${MODULE3_DIR}%.c
-	$(CC) -g -c -o $@ $^
+	$(CC) -g $(CFLAGS) -c -o $@ $^
 
 #init
 ${OBJ_DIR}%.o: ${MODULE4_DIR}%.c
-	$(CC) -g -c -o $@ $^
+	$(CC) -g $(CFLAGS) -c -o $@ $^
 
 ${OBJ_DIR}%.o: ${MODULE5_DIR}%.c
-	$(CC) -g -c -o $@ $^
+	$(CC) -g $(CFLAGS) -c -o $@ $^
 
 all: ${OBJ_DIR} ${NAME}
 #@$(LOAD)

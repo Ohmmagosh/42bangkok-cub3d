@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 03:17:52 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/18 03:18:11 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/05 02:13:01 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_inarray(const int *array, int nbr, size_t size)
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (i < (int)size)
 	{
 		if (array[i] == nbr)
 			return (1);
