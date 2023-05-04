@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:26:45 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/05 03:09:29 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/05 03:20:31 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	getdoorpos(int x, int y, t_pro *p)
 	}
 	else if (p->map.map[y][x] == '0' && p->tline.doorflag == 1)
 	{
-		if (p->tline.doorpos.y == p->tline.pos.y && \
-				p->tline.doorpos.x == p->tline.pos.x)
+		if (p->tline.doorpos.y == (int)p->tline.pos.y && \
+				p->tline.doorpos.x == (int)p->tline.pos.x)
 			return ;
 		p->map.map[p->tline.doorpos.y][p->tline.doorpos.x] = 'D';
 		p->tline.doorflag = 0;
