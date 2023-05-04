@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:38:08 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/03/30 09:57:15 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:36:13 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_twod_str(char	**str)
 
 void	free_threed_str(char ***str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)

@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 04:55:35 by rchiewli          #+#    #+#             */
-/*   Updated: 2023/05/04 04:57:45 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:41:02 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	iswall(int x, int y, t_pro *p)
 
 void	lode_start_tline_init(t_pro *p, int i)
 {
-	p->tline.cameraX = 2 * i / (float)WIN_WIDTH - 1;
-	p->tline.rayDirX = p->di.x + p->spt.plane.x * p->tline.cameraX;
-	p->tline.rayDirY = p->di.y + p->spt.plane.y * p->tline.cameraX;
-	p->tline.mapX = (int)p->tline.pos.x;
-	p->tline.mapY = (int)p->tline.pos.y;
+	p->tline.camera_x = 2 * i / (float)WIN_WIDTH - 1;
+	p->tline.raydir_x = p->di.x + p->spt.plane.x * p->tline.camera_x;
+	p->tline.raydir_y = p->di.y + p->spt.plane.y * p->tline.camera_x;
+	p->tline.map_x = (int)p->tline.pos.x;
+	p->tline.map_y = (int)p->tline.pos.y;
 	return ;
 }

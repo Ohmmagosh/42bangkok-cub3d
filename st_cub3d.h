@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:29:18 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:19:56 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:38:53 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_vei
 	int	y;
 }	t_vei;
 
-typedef	struct s_vef
+typedef struct s_vef
 {
 	float	x;
 	float	y;
@@ -43,11 +43,11 @@ typedef struct s_vec
 
 typedef struct s_line
 {
-	float	cameraX;
-	float	rayDirX;
-	float	rayDirY;
-	int		mapX;
-	int		mapY;
+	float	camera_x;
+	float	raydir_x;
+	float	raydir_y;
+	int		map_x;
+	int		map_y;
 	t_vef	sidedist;
 	t_vef	delta;
 	float	perpdist;
@@ -55,7 +55,7 @@ typedef struct s_line
 	t_vei	step;
 	t_vef	pos;
 	int		news;
-	int		Wall;
+	int		wall;
 	int		stepcount;
 	t_vei	doorpos;
 	int		doorflag;
@@ -117,7 +117,7 @@ typedef struct s_spt
 	t_vef	plane;
 }	t_spt;
 
-typedef struct	s_myimg
+typedef struct s_myimg
 {
 	void	*img;
 	char	*addr;
@@ -125,6 +125,21 @@ typedef struct	s_myimg
 	int		line_length;
 	int		endian;
 }				t_myimg;
+
+typedef struct s_wadd
+{
+	int		height;
+	int		d_start;
+	int		d_end;
+	int		tex_x;
+	int		tex_y;
+	int		texwidth;
+	int		texheight;
+	float	step;
+	float	texpos;
+	float	wall_x;
+	int		y;
+}	t_wadd;
 
 typedef struct s_render
 {

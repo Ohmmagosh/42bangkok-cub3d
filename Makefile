@@ -45,7 +45,8 @@ MODULE2		= process.c \
 				lodev_utils.c \
 				draw_scene.c \
 				background.c \
-				hand_animation.c
+				hand_animation.c \
+				key_hook_keys.c
 
 MODULE3		= free.c
 

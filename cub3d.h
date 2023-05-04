@@ -6,7 +6,7 @@
 /*   By: rchiewli <rchiewli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 02:42:46 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/05/04 05:20:33 by rchiewli         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:37:04 by rchiewli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void	create_minimap(t_vei pos, t_pro *p);
 void	put_img_to_win(t_pro *p, int mode, t_vei pic);
 int		iswall(int x, int y, t_pro *p);
 void	lode_start_tline_init(t_pro *p, int i);
+void	key_3(t_pro *p, float step);
+void	key_13(t_pro *p, float step);
+void	key_0_or_2(t_pro *p, float step, int key);
+void	key_1(t_pro *p, float step);
+void	getdoorpos(int x, int y, t_pro *p);
 
 //free
 void	free_twod_str(char	**str);
